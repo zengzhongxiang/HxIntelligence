@@ -101,6 +101,7 @@ public class MainActivity extends BaseActivity {
         temperature_txt.setText (default_temperature+"℃");
 //        customVolume.setOnProcessListener(listener);
 
+
     }
 
 
