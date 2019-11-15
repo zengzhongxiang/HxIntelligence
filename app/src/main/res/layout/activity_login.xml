@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@mipmap/laucher_bg">
+
+    <RelativeLayout
+        android:id="@+id/relative_1"
+        android:layout_width="@dimen/w_833"
+        android:layout_height="@dimen/h_594"
+        android:layout_centerInParent="true"
+       >
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/fff15"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="用户登录"
+                android:textColor="@color/fff_00"
+                android:textSize="@dimen/w_30" />
+
+            <LinearLayout
+                android:layout_width="@dimen/w_515"
+                android:layout_height="@dimen/h_60"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/h_40"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/w_70"
+                    android:layout_height="@dimen/h_60"
+                    android:background="#55a3ff">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/user_laucher" />
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/edit_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_edit_nomal"
+                    android:hint="请输入账号"
+                    android:gravity="center_vertical"
+                    android:focusable="true"
+                    android:paddingLeft="@dimen/w_20"
+                    android:singleLine="true"
+                    android:textSize="@dimen/w_25"
+                    android:textColor="@color/black_00" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/w_515"
+                android:layout_height="@dimen/h_60"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/h_19"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/w_70"
+                    android:layout_height="@dimen/h_60"
+                    android:background="#55a3ff">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/pwd_laucher" />
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/edit_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_edit_nomal"
+                    android:hint="请输入密码"
+                    android:gravity="center_vertical"
+                    android:focusable="true"
+                    android:inputType="textPassword"
+                    android:paddingLeft="@dimen/w_20"
+                    android:textSize="@dimen/w_25"
+                    android:singleLine="true"
+                    android:textColor="@color/black_00" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/w_515"
+                android:layout_height="@dimen/h_60"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/h_40"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/w_70"
+                    android:layout_height="@dimen/h_60"
+                    android:background="#55a3ff">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/user_laucher" />
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/edit_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/selector_edit_nomal"
+                    android:hint="请输入房间号"
+                    android:gravity="center_vertical"
+                    android:focusable="true"
+                    android:paddingLeft="@dimen/w_20"
+                    android:singleLine="true"
+                    android:textSize="@dimen/w_25"
+                    android:textColor="@color/black_00" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/login_relative"
+                android:layout_width="@dimen/w_515"
+                android:layout_height="@dimen/h_60"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/h_33"
+                android:background="@mipmap/btn_bg">
+            <Button
+                android:id="@+id/but_login"
+                android:layout_width="@dimen/w_515"
+                android:layout_height="@dimen/h_60"
+                android:textColor="@color/black_00"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/w_25"
+                android:text="登录"
+                android:background="@drawable/selector_but_login" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!--<include-->
+        <!--android:id="@+id/mykey1"-->
+        <!--layout="@layout/keyboard_number"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:visibility="gone"/>-->
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/mykey2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:visibility="gone"-->
+        <!--&gt;-->
+        <!--<include layout="@layout/nine_keybord"/>-->
+    <!--</LinearLayout>-->
+</RelativeLayout>

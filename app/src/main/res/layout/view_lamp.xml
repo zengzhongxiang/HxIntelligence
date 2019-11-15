@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/h_300"
+    android:layout_marginTop="@dimen/h_50"
+    android:layout_marginBottom="@dimen/h_50">
+
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         android:layout_centerHorizontal="true"
+         android:orientation="horizontal"
+         >
+          <RelativeLayout
+              android:layout_width="@dimen/w_300"
+              android:layout_height="match_parent"
+              android:background="@color/fff26">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:gravity="center_horizontal"
+                   android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="灯光1"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_20" />
+
+                    <Button
+                        android:id="@+id/but_off_deng1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_30"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:focusable="true"
+
+                        android:text="开"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+
+                    <Button
+                        android:id="@+id/but_on_deng1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:text="关"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+               </LinearLayout>
+          </RelativeLayout>
+
+          <RelativeLayout
+              android:layout_width="@dimen/w_300"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="@dimen/w_30"
+              android:background="@color/fff26">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:gravity="center_horizontal"
+                   android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="灯光2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_20" />
+
+                    <Button
+                        android:id="@+id/but_off_deng2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_30"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:focusable="true"
+
+                        android:text="开"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+
+                    <Button
+                        android:id="@+id/but_on_deng2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:text="关"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+               </LinearLayout>
+          </RelativeLayout>
+
+          <RelativeLayout
+              android:layout_width="@dimen/w_300"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="@dimen/w_30"
+              android:background="@color/fff26">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:gravity="center_horizontal"
+                   android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="灯光3"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_20" />
+
+                    <Button
+                        android:id="@+id/but_off_deng3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_30"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:focusable="true"
+
+                        android:text="开"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+
+                    <Button
+                        android:id="@+id/but_on_deng3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:text="关"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+               </LinearLayout>
+          </RelativeLayout>
+     </LinearLayout>
+</RelativeLayout>

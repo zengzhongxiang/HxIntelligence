@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/yl_bg"
+    android:clipChildren="false"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h_50">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="智能客控"
+            android:textColor="@color/circle_color"
+            android:textSize="@dimen/text_size_30" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h_450"
+        android:layout_marginLeft="@dimen/w_30"
+        android:layout_marginTop="@dimen/h_50"
+        android:layout_marginRight="@dimen/w_30">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="@dimen/w_300"
+                android:layout_height="match_parent"
+                android:background="@color/fff26">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="灯光控制"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_20" />
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/w_100"
+                        android:layout_height="@dimen/w_100">
+
+                        <ImageView
+                            android:layout_width="@dimen/w_100"
+                            android:layout_height="@dimen/w_100"
+                            android:layout_marginTop="@dimen/h_20"
+                            android:background="@mipmap/deng" />
+                    </RelativeLayout>
+
+                    <Button
+                        android:id="@+id/but_off_lamp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:focusable="true"
+                        android:text="全开"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+
+                    <Button
+                        android:id="@+id/but_on_lamp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:text="全关"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="@dimen/w_300"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/w_30"
+                android:background="@color/fff26">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="情景模式"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_20" />
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/w_100"
+                        android:layout_height="@dimen/w_100">
+
+                        <ImageView
+                            android:layout_width="@dimen/w_100"
+                            android:layout_height="@dimen/w_100"
+                            android:layout_marginTop="@dimen/h_20"
+                            android:background="@mipmap/mode_s" />
+                    </RelativeLayout>
+
+                    <Button
+                        android:id="@+id/but_mode"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:nextFocusDown="@+id/but_mode1"
+                        android:focusable="true"
+                        android:text="情景模式"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:textColor="@color/white"
+                        android:visibility="invisible"
+                        android:textSize="@dimen/w_25" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/window_relative"
+                android:layout_width="@dimen/w_300"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/w_30"
+                android:background="@color/fff26">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="窗帘控制"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_20" />
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/w_100"
+                        android:layout_height="@dimen/w_100">
+
+                        <ImageView
+                            android:layout_width="@dimen/w_100"
+                            android:layout_height="@dimen/w_50"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/h_20"
+                            android:background="@mipmap/window_s" />
+                    </RelativeLayout>
+
+                    <Button
+                        android:id="@+id/but_stop_window"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:focusable="true"
+                        android:text="暂停"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/but_off_window"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/h_60"
+                            android:layout_centerInParent="true"
+                            android:layout_weight="1"
+                            android:background="@drawable/selecor_btn_kk"
+                            android:text="开"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/w_25" />
+
+                        <View
+                            android:layout_width="@dimen/w_20"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:id="@+id/but_on_window"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/h_60"
+                            android:layout_centerInParent="true"
+                            android:layout_weight="1"
+                            android:background="@drawable/selecor_btn_kk"
+                            android:text="关"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/w_25" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/air_relative"
+                android:layout_width="@dimen/w_300"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/w_30"
+                android:background="@color/fff26">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="空调控制"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_20" />
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/w_100"
+                        android:layout_height="@dimen/w_100">
+
+                        <ImageView
+                            android:layout_width="@dimen/w_100"
+                            android:layout_height="@dimen/h_60"
+                            android:layout_marginTop="@dimen/h_20"
+                            android:background="@mipmap/air_s" />
+                    </RelativeLayout>
+
+                    <Button
+                        android:id="@+id/but_off_air"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:focusable="true"
+                        android:text="开"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+                    <Button
+                        android:id="@+id/but_on_air"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/h_60"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/w_30"
+                        android:layout_marginTop="@dimen/h_20"
+                        android:layout_marginRight="@dimen/w_30"
+                        android:background="@drawable/selecor_btn_kk"
+                        android:nextFocusDown="@+id/but_temperature_add"
+                        android:text="关"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/w_25" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include android:id="@+id/lamp_layout" layout="@layout/view_lamp"/>
+    <include android:id="@+id/mode_layout" layout="@layout/view_mode"
+        android:visibility="gone"/>
+    <include android:id="@+id/window_layout" layout="@layout/view_window"
+        android:visibility="gone"/>
+    <include android:id="@+id/air_layout" layout="@layout/view_air"
+        android:visibility="gone"/>
+
+</LinearLayout>
