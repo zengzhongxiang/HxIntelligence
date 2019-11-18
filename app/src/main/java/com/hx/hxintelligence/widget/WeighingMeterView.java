@@ -63,7 +63,7 @@ public class WeighingMeterView extends View {
 
         weightDataPaint = new Paint();
         weightDataPaint.setColor(Color.WHITE);
-        weightDataPaint.setTextSize(30);
+        weightDataPaint.setTextSize(26);
 //        weightDataPaint.setStyle(Paint.Style.STROKE);
 
         scaleDataPaint = new Paint();
@@ -137,13 +137,11 @@ public class WeighingMeterView extends View {
         Rect rect = new Rect();
         String data = "";
         if(currentData == 0){
-            data = "一级";
-        }else if(currentData == 100){
-            data = "二级";
-        }else if(currentData == 200){
-            data = "三级";
+            data = "低";
+        }else if(currentData == 150){
+            data = "中";
         }else if(currentData == 300){
-            data = "四级";
+            data = "高";
         }
 //        String data = String.valueOf(currentData) + "级";
         weightDataPaint.getTextBounds(data,0,data.length(),rect);

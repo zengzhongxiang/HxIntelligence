@@ -9,20 +9,20 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class CustomVolumeView extends View {
+public class AirTempView extends View {
 
     private static final int INVALID_X =-1234;
-    private static final String TAG = CustomVolumeView.class.getSimpleName();
+    private static final String TAG = AirTempView.class.getSimpleName();
     private int mPressXIndex = INVALID_X;
 
-    private static final int DEFAULT_TOTAL = 20;
+    private static final int DEFAULT_TOTAL = 14;
     private int mTotal = DEFAULT_TOTAL;
 
     private int mBgColor = 0xff000000;
     private int mSelectColor = 0xff5BC1C3;
 
     private Rect mRect;
-    private int mRectWidth = 10;
+    private int mRectWidth = 15;
     private int mRectHeight = 10;
     private int space = 2;
     private int mPrecess = 7;
@@ -32,18 +32,18 @@ public class CustomVolumeView extends View {
 
     private Paint mPaint;
 
-    public CustomVolumeView(Context context) {
+    public AirTempView(Context context) {
         super(context);
         init();
     }
 
-    public CustomVolumeView(Context context, AttributeSet attrs) {
+    public AirTempView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public CustomVolumeView(Context context, AttributeSet attrs,
-                            int defStyleAttr) {
+    public AirTempView(Context context, AttributeSet attrs,
+                       int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

@@ -25,10 +25,11 @@ import com.hx.hxintelligence.utils.KkUtil;
 import com.hx.hxintelligence.utils.ResultCallback;
 import com.hx.hxintelligence.utils.SpApplyTools;
 import com.hx.hxintelligence.utils.UnicodeUtil;
-import com.hx.hxintelligence.widget.CustomVolumeView;
+import com.hx.hxintelligence.widget.AirTempView;
 import com.hx.hxintelligence.widget.LoadingDialog;
 import com.hx.hxintelligence.widget.WeighingMeterView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xutils.view.annotation.ContentView;
@@ -68,7 +69,7 @@ public class MainActivity extends BaseActivity {
     private WeighingMeterView weighing;
 
     @ViewInject(R.id.customVolume)
-    private CustomVolumeView customVolume;
+    private AirTempView customVolume;
 
     @ViewInject(R.id.temperature_txt)
     private TextView temperature_txt;  //当前温度
@@ -101,7 +102,9 @@ public class MainActivity extends BaseActivity {
         temperature_txt.setText (default_temperature+"℃");
 //        customVolume.setOnProcessListener(listener);
 
-
+        //默认风速
+        speed = SpApplyTools.getInt (SpApplyTools.HX_AIR_SPEED,0);
+        weighing.setPercentData(speed,new DecelerateInterpolator ());
     }
 
 
@@ -137,7 +140,7 @@ public class MainActivity extends BaseActivity {
 
                     }else if(device.getSub_type () == 51){  //反馈开关 3路
                         lamp_Device = device;
-                    }else if(device.getSub_type () == 177){  //温控面板
+                    }else if(device.getSub_type () == 145){  //温控面板
                         air_Device = device;
                     }
                 }
@@ -148,7 +151,7 @@ public class MainActivity extends BaseActivity {
     int speed = 0;
     @Event(value = {R.id.but_off_lamp,R.id.but_on_lamp,R.id.but_stop_window,R.id.but_off_window,R.id.but_on_window,R.id.but_speed_air,R.id.but_temperature_add,R.id.but_temperature_reduce,
             R.id.but_off_deng1,R.id.but_on_deng1,R.id.but_off_deng2,R.id.but_on_deng2,R.id.but_off_deng3,R.id.but_on_deng3,R.id.but_off_air,R.id.but_on_air,
-            R.id.but_air_refrigeration,R.id.but_air_arefaction,R.id.but_air_wind,R.id.but_air_heat,
+            R.id.but_air_refrigeration,R.id.but_air_heat,
             R.id.but_mode,R.id.but_mode1,R.id.but_mode2,R.id.but_mode3}, type = View.OnClickListener.class)
     private void relativeClick(View view) {
         viewId = view.getId ();
@@ -226,19 +229,15 @@ public class MainActivity extends BaseActivity {
             case R.id.but_air_refrigeration:  //制冷
                 getAirDevice("model",0,"正在切换制冷模式，请稍后...");
                 break;
-            case R.id.but_air_arefaction:  //除湿
-//                getAirDevice("model","dehumidification","正在切换除湿模式，请稍后...");
-                break;
-            case R.id.but_air_wind:  //吹风
-//                getAirDevice("model","airsupply","正在切换吹风模式，请稍后...");
-                break;
             case R.id.but_air_heat:  //制热
                 getAirDevice("model",1,"正在切换制热模式，请稍后...");
                 break;
             case R.id.but_temperature_add:  //空调温度加
                 default_temperature ++;
-                if(default_temperature >36){
-                    default_temperature = 36;
+                if(default_temperature >30){
+                    default_temperature = 30;
+                    Toast.makeText (MainActivity.this, "最大温度只能设置30℃", Toast.LENGTH_LONG).show ();
+                    return;
                 }
 
                 customVolume.setProcess(default_temperature - 16);
@@ -250,29 +249,26 @@ public class MainActivity extends BaseActivity {
                 default_temperature --;
                 if(default_temperature <16){
                     default_temperature = 16;
+                    Toast.makeText (MainActivity.this, "最小温度只能设置16℃", Toast.LENGTH_LONG).show ();
+                    return;
                 }
-                customVolume.setProcess(default_temperature - 16);
-                temperature_txt.setText (default_temperature+"℃");
+//                customVolume.setProcess(default_temperature - 16);
+//                temperature_txt.setText (default_temperature+"℃");
 
                 getAirDevice("temp",default_temperature,"请稍后...");
                 break;
             case R.id.but_speed_air:  //空调风速
                 int fs;
                 if(speed == 0){
-                    speed = 100;
-                    fs = 3;
-                }else if(speed == 100){
-                    speed = 200;
+                    speed = 150;
                     fs = 2;
-                }else if(speed == 200){
+                }else if(speed == 150){
                     speed = 300;
-                    fs = 1;
+                    fs = 3;
                 }else{
                     speed = 0;
-                    fs = 0;
+                    fs = 1;
                 }
-                weighing.setPercentData(speed,new DecelerateInterpolator ());
-
                 getAirDevice("speed",fs,"请稍后...");
                 break;
         }
@@ -452,12 +448,14 @@ public class MainActivity extends BaseActivity {
             js_request.put("home_id", home_id);
             js_request.put("md5", air_Device.getMd5 ());
             js_request.put("sub_id", air_Device.getSub_id ());
-            js_request.put("type", "aircondition");
+            js_request.put("type", "thermostats");
 
             JSONObject js_data = new JSONObject();
             js_data.put ("attr",attr);
             js_data.put ("value",value);
-            js_request.put("data", js_data);
+            JSONArray array_data = new JSONArray();
+            array_data.put (js_data);
+            js_request.put ("data",array_data);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -481,17 +479,15 @@ public class MainActivity extends BaseActivity {
                         String value = data.getValue ();
                         if("speed".equals (attr)){  //当前风速
                             //显示风速相关信息
-//                            if(speed == 0){
-//                                speed = 100;
-//                            }else if(speed == 100){
-//                                speed = 200;
-//                            }else if(speed == 200){
-//                                speed = 300;
-//                            }else{
-//                                speed = 0;
-//                            }
-//                            weighing.setPercentData(speed,new DecelerateInterpolator ());
-//                            SpApplyTools.putInt (SpApplyTools.HX_AIR_SPEED,value);
+                            if("1".equals (value)){
+                                speed = 0;
+                            }else if("2".equals (value)){
+                                speed = 150;
+                            }else{
+                                speed = 300;
+                            }
+                            weighing.setPercentData(speed,new DecelerateInterpolator ());
+                            SpApplyTools.putInt (SpApplyTools.HX_AIR_SPEED,speed);
                         }else if("temp".equals (attr)){  //当前温度
                             if(!TextUtils.isEmpty (value)) {
                                 int wd = Integer.parseInt (value);

@@ -51,78 +51,37 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <LinearLayout
+
+                <Button
+                    android:id="@+id/but_air_refrigeration"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/h_60"
+                    android:layout_centerInParent="true"
                     android:layout_marginLeft="@dimen/w_30"
+                    android:layout_marginTop="@dimen/h_20"
                     android:layout_marginRight="@dimen/w_30"
-                    android:orientation="horizontal">
+                    android:background="@drawable/selecor_btn_kk"
+                    android:nextFocusUp="@+id/but_off_air"
+                    android:nextFocusLeft="@+id/but_speed_air"
+                    android:focusable="true"
+                    android:text="制冷"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/w_25" />
 
-                    <Button
-                        android:id="@+id/but_air_refrigeration"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/h_60"
-                        android:layout_centerInParent="true"
-                        android:layout_weight="1"
-                        android:background="@drawable/selecor_btn_kk"
-                        android:nextFocusUp="@+id/but_off_air"
-                        android:nextFocusLeft="@+id/but_speed_air"
-                        android:text="制冷"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w_25" />
 
-                    <View
-                        android:layout_width="@dimen/w_20"
-                        android:layout_height="wrap_content" />
-
-                    <Button
-                        android:id="@+id/but_air_arefaction"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/h_60"
-                        android:layout_centerInParent="true"
-                        android:layout_weight="1"
-                        android:background="@drawable/selecor_btn_kk"
-                        android:nextFocusUp="@+id/but_off_air"
-                        android:text="除湿"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w_25" />
-                </LinearLayout>
-
-                <LinearLayout
+                <Button
+                    android:id="@+id/but_air_heat"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/h_60"
+                    android:layout_centerInParent="true"
                     android:layout_marginLeft="@dimen/w_30"
-                    android:layout_marginTop="@dimen/h_40"
+                    android:layout_marginTop="@dimen/h_50"
                     android:layout_marginRight="@dimen/w_30"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/but_air_wind"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/h_60"
-                        android:layout_centerInParent="true"
-                        android:nextFocusLeft="@+id/but_speed_air"
-                        android:layout_weight="1"
-                        android:background="@drawable/selecor_btn_kk"
-                        android:text="吹风"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w_25" />
-
-                    <View
-                        android:layout_width="@dimen/w_20"
-                        android:layout_height="wrap_content" />
-
-                    <Button
-                        android:id="@+id/but_air_heat"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/h_60"
-                        android:layout_centerInParent="true"
-                        android:layout_weight="1"
-                        android:background="@drawable/selecor_btn_kk"
-                        android:text="制热"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w_25" />
-                </LinearLayout>
+                    android:background="@drawable/selecor_btn_kk"
+                    android:nextFocusLeft="@+id/but_speed_air"
+                    android:text="制热"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/w_25" />
 
             </LinearLayout>
         </RelativeLayout>
@@ -140,7 +99,7 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <com.hx.hxintelligence.widget.CustomVolumeView
+                <com.hx.hxintelligence.widget.AirTempView
                     android:id="@+id/customVolume"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/h_40"
