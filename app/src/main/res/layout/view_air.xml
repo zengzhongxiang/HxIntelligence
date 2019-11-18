@@ -63,6 +63,7 @@
                     android:background="@drawable/selecor_btn_kk"
                     android:nextFocusUp="@+id/but_off_air"
                     android:nextFocusLeft="@+id/but_speed_air"
+                    android:nextFocusRight="@+id/but_temperature_add"
                     android:focusable="true"
                     android:text="制冷"
                     android:textColor="@color/white"

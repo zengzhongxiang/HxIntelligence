@@ -240,8 +240,8 @@ public class MainActivity extends BaseActivity {
                     return;
                 }
 
-                customVolume.setProcess(default_temperature - 16);
-                temperature_txt.setText (default_temperature+"℃");
+//                customVolume.setProcess(default_temperature - 16);
+//                temperature_txt.setText (default_temperature+"℃");
 
                 getAirDevice("temp",default_temperature,"请稍后...");
                 break;
@@ -260,13 +260,10 @@ public class MainActivity extends BaseActivity {
             case R.id.but_speed_air:  //空调风速
                 int fs;
                 if(speed == 0){
-                    speed = 150;
                     fs = 2;
                 }else if(speed == 150){
-                    speed = 300;
                     fs = 3;
                 }else{
-                    speed = 0;
                     fs = 1;
                 }
                 getAirDevice("speed",fs,"请稍后...");
