@@ -144,7 +144,7 @@
                         android:layout_marginRight="@dimen/w_30"
                         android:background="@drawable/selecor_btn_kk"
                         android:focusable="true"
-
+                        android:nextFocusRight="@id/but_off_deng1"
                         android:text="开"
                         android:textColor="@color/white"
                         android:textSize="@dimen/w_25" />

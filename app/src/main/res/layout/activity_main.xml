@@ -87,6 +87,7 @@
                         android:layout_marginTop="@dimen/h_20"
                         android:layout_marginRight="@dimen/w_30"
                         android:background="@drawable/selecor_btn_kk"
+                        android:nextFocusRight="@+id/but_mode"
                         android:text="全关"
                         android:textColor="@color/white"
                         android:textSize="@dimen/w_25" />
@@ -134,7 +135,6 @@
                         android:layout_marginTop="@dimen/h_20"
                         android:layout_marginRight="@dimen/w_30"
                         android:background="@drawable/selecor_btn_kk"
-                        android:nextFocusDown="@+id/but_mode1"
                         android:focusable="true"
                         android:text="情景模式"
                         android:textColor="@color/white"

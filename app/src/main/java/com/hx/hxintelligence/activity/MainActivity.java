@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,12 +53,17 @@ public class MainActivity extends BaseActivity {
     @ViewInject(R.id.air_layout)
     private RelativeLayout air_layout;   //空调布局
 
-    @ViewInject(R.id.but_mode1)
-    private Button but_mode1;
-    @ViewInject(R.id.but_mode2)
-    private Button but_mode2;
-    @ViewInject(R.id.but_mode3)
-    private Button but_mode3;
+    @ViewInject(R.id.mode_all_linear)
+    private LinearLayout mode_all_linear;   //模式布局
+    @ViewInject(R.id.but_mode)
+    private Button but_mode;
+
+//    @ViewInject(R.id.but_mode1)
+//    private Button but_mode1;
+//    @ViewInject(R.id.but_mode2)
+//    private Button but_mode2;
+//    @ViewInject(R.id.but_mode3)
+//    private Button but_mode3;
 
     private int viewId = -1;
 
@@ -122,6 +130,8 @@ public class MainActivity extends BaseActivity {
 
         getDevice();  //每次启动进来重新获取当前家庭里面的设备
         initDevice ();
+
+        getMacro("正在获取所有模式，请稍后...",false);  //获取所有情景模式
     }
 
     private void initDevice() {
@@ -152,7 +162,7 @@ public class MainActivity extends BaseActivity {
     @Event(value = {R.id.but_off_lamp,R.id.but_on_lamp,R.id.but_stop_window,R.id.but_off_window,R.id.but_on_window,R.id.but_speed_air,R.id.but_temperature_add,R.id.but_temperature_reduce,
             R.id.but_off_deng1,R.id.but_on_deng1,R.id.but_off_deng2,R.id.but_on_deng2,R.id.but_off_deng3,R.id.but_on_deng3,R.id.but_off_air,R.id.but_on_air,
             R.id.but_air_refrigeration,R.id.but_air_heat,
-            R.id.but_mode,R.id.but_mode1,R.id.but_mode2,R.id.but_mode3}, type = View.OnClickListener.class)
+            R.id.but_mode/*,R.id.but_mode1,R.id.but_mode2,R.id.but_mode3*/}, type = View.OnClickListener.class)
     private void relativeClick(View view) {
         viewId = view.getId ();
         onClickBtn (viewId);
@@ -188,26 +198,26 @@ public class MainActivity extends BaseActivity {
 
             //情景模式相关
             case  R.id.but_mode:
-                getMacro("正在获取所有模式，请稍后...");
+                getMacro("正在获取所有模式，请稍后...",true);
                 break;
-            case  R.id.but_mode1:
-                Object id = but_mode1.getTag ();
-                if(id!=null) {
-                    getCtrlMacro (id.toString (), "请稍后...");
-                }
-                break;
-            case  R.id.but_mode2:
-                id = but_mode2.getTag ();
-                if(id!=null) {
-                    getCtrlMacro (id.toString (), "请稍后...");
-                }
-                break;
-            case  R.id.but_mode3:
-                id = but_mode3.getTag ();
-                if(id!=null) {
-                    getCtrlMacro (id.toString (), "请稍后...");
-                }
-                break;
+//            case  R.id.but_mode1:
+//                Object id = but_mode1.getTag ();
+//                if(id!=null) {
+//                    getCtrlMacro (id.toString (), "请稍后...");
+//                }
+//                break;
+//            case  R.id.but_mode2:
+//                id = but_mode2.getTag ();
+//                if(id!=null) {
+//                    getCtrlMacro (id.toString (), "请稍后...");
+//                }
+//                break;
+//            case  R.id.but_mode3:
+//                id = but_mode3.getTag ();
+//                if(id!=null) {
+//                    getCtrlMacro (id.toString (), "请稍后...");
+//                }
+//                break;
             //窗帘相关
             case R.id.but_stop_window:  //停止
                 getCtrlDevice("stop",0,"正在停止，请稍后...");
@@ -512,14 +522,16 @@ public class MainActivity extends BaseActivity {
      * 获取家庭下面所有的情景模式
      * @param lodingTex
      */
-    private void getMacro(String lodingTex)
+    private void getMacro(String lodingTex,boolean bl)
     {
 //        if(lamp_Device == null){
 //            Toast.makeText (MainActivity.this, "没有找到反馈开关，请重新登录再试", Toast.LENGTH_LONG).show ();
 //            return;
 //        }
-        loadingDialog = new LoadingDialog (MainActivity.this, lodingTex, R.mipmap.ic_dialog_loading);
-        loadingDialog.show ();
+        if(bl) {
+            loadingDialog = new LoadingDialog (MainActivity.this, lodingTex, R.mipmap.ic_dialog_loading);
+            loadingDialog.show ();
+        }
 
         int random = KkUtil.getRandom();
         String time = KkUtil.getTimeStame ();
@@ -548,18 +560,20 @@ public class MainActivity extends BaseActivity {
                 if("ok".equals (response.getAck ())) {   //成功
                     List<MacroResponse.MacroInfo> datas = response.getMacros ();
                     if(datas!=null && datas.size ()>0) {
+                        mode_all_linear.removeAllViews ();
                         for (int i = 0; i <datas.size () ; i++) {
                             MacroResponse.MacroInfo  macroInfo = datas.get (i);
-                            if(i == 0){
-                                but_mode1.setTag (macroInfo.getMacro_id ());
-                                but_mode1.setText (macroInfo.getName ());
-                            }else if(i == 1){
-                                but_mode2.setTag (macroInfo.getMacro_id ());
-                                but_mode2.setText (macroInfo.getName ());
-                            }else if(i == 2){
-                                but_mode3.setTag (macroInfo.getMacro_id ());
-                                but_mode3.setText (macroInfo.getName ());
-                            }
+                            addButton(macroInfo,i,datas.size ());
+//                            if(i == 0){
+//                                but_mode1.setTag (macroInfo.getMacro_id ());
+//                                but_mode1.setText (macroInfo.getName ());
+//                            }else if(i == 1){
+//                                but_mode2.setTag (macroInfo.getMacro_id ());
+//                                but_mode2.setText (macroInfo.getName ());
+//                            }else if(i == 2){
+//                                but_mode3.setTag (macroInfo.getMacro_id ());
+//                                but_mode3.setText (macroInfo.getName ());
+//                            }
                         }
                     }
                 }
@@ -573,6 +587,49 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    private Button firstBtn;
+    private void addButton(MacroResponse.MacroInfo  macroInfo,int i,int maxleng){
+        Button btnAdd = new Button(MainActivity.this);
+        LinearLayout.LayoutParams btnAddParam = new LinearLayout.LayoutParams(
+                getResources ().getDimensionPixelSize(R.dimen.w_300),
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        btnAdd.setLayoutParams(btnAddParam);
+        // 靠右放置
+        btnAddParam.setMargins (getResources ().getDimensionPixelSize(R.dimen.w_30),getResources ().getDimensionPixelSize(R.dimen.h_20),getResources ().getDimensionPixelSize(R.dimen.w_30),0);
+        // 设置属性
+        btnAdd.setBackgroundResource(R.drawable.selecor_btn_kk);
+        btnAdd.setText (macroInfo.getName ());
+        btnAdd.setTextColor (getResources ().getColor (R.color.white));
+        btnAdd.setTextSize (getResources ().getDimensionPixelSize(R.dimen.text_size_16));
+        btnAdd.setFocusable (true);
+        btnAdd.setId (10101010+i);
+        btnAdd.setNextFocusUpId (R.id.but_mode);
+        btnAdd.setTag (macroInfo.getMacro_id ());
+//        btnAdd.setId();
+        // 设置点击操作
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Object id = v.getTag ();
+                if(id!=null) {
+                    getCtrlMacro (id.toString (), "请稍后...");
+                }
+            }
+        });
+        mode_all_linear.addView(btnAdd);
+
+        if(i == 0){
+            but_mode.setNextFocusDownId (10101010);
+            firstBtn = btnAdd;
+        }
+
+        if(i == maxleng-1){
+            firstBtn.setNextFocusLeftId (10101010+i);
+            btnAdd.setNextFocusRightId (10101010);
+        }
     }
 
     private void getCtrlMacro(String macro_id,String lodingTex)

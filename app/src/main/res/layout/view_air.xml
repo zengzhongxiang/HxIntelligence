@@ -32,6 +32,7 @@
                 android:layout_marginRight="@dimen/w_30"
                 android:background="@drawable/selecor_btn_kk"
                 android:nextFocusUp="@+id/but_off_air"
+                android:nextFocusLeft="@+id/but_temperature_reduce"
                 android:text="风速"
                 android:textColor="@color/white"
                 android:textSize="@dimen/w_25" />
