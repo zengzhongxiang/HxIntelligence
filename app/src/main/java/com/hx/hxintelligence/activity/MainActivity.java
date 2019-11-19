@@ -528,10 +528,6 @@ public class MainActivity extends BaseActivity {
 //            Toast.makeText (MainActivity.this, "没有找到反馈开关，请重新登录再试", Toast.LENGTH_LONG).show ();
 //            return;
 //        }
-        if(bl) {
-            loadingDialog = new LoadingDialog (MainActivity.this, lodingTex, R.mipmap.ic_dialog_loading);
-            loadingDialog.show ();
-        }
 
         int random = KkUtil.getRandom();
         String time = KkUtil.getTimeStame ();
@@ -550,9 +546,6 @@ public class MainActivity extends BaseActivity {
             @Override
             public void success(String s) {
                 System.out.println("success=="+s);
-                if (loadingDialog != null && loadingDialog.isShowing ()) {
-                    loadingDialog.dismiss ();
-                }
                 LoginSession (s);
 
                 Gson gson = new Gson();
@@ -581,10 +574,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void fail(String str) {
-                System.out.println("str=="+str);
-                if (loadingDialog != null && loadingDialog.isShowing ()) {
-                    loadingDialog.dismiss ();
-                }
+
             }
         });
     }
@@ -602,7 +592,7 @@ public class MainActivity extends BaseActivity {
         btnAdd.setBackgroundResource(R.drawable.selecor_btn_kk);
         btnAdd.setText (macroInfo.getName ());
         btnAdd.setTextColor (getResources ().getColor (R.color.white));
-        btnAdd.setTextSize (getResources ().getDimensionPixelSize(R.dimen.text_size_16));
+        btnAdd.setTextSize (getResources ().getDimensionPixelSize(R.dimen.text_size_18));
         btnAdd.setFocusable (true);
         btnAdd.setId (10101010+i);
         btnAdd.setNextFocusUpId (R.id.but_mode);
