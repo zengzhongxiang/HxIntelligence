@@ -40,7 +40,8 @@
                         android:layout_marginRight="@dimen/w_30"
                         android:background="@drawable/selecor_btn_kk"
                         android:focusable="true"
-
+                        android:nextFocusUp="@+id/but_off_lamp"
+                        android:nextFocusLeft="@+id/but_off_deng3"
                         android:text="开"
                         android:textColor="@color/white"
                         android:textSize="@dimen/w_25" />
@@ -55,6 +56,7 @@
                         android:layout_marginTop="@dimen/h_20"
                         android:layout_marginRight="@dimen/w_30"
                         android:background="@drawable/selecor_btn_kk"
+                        android:nextFocusLeft="@+id/but_on_deng3"
                         android:text="关"
                         android:textColor="@color/white"
                         android:textSize="@dimen/w_25" />
@@ -92,7 +94,7 @@
                         android:layout_marginRight="@dimen/w_30"
                         android:background="@drawable/selecor_btn_kk"
                         android:focusable="true"
-
+                        android:nextFocusUp="@+id/but_off_lamp"
                         android:text="开"
                         android:textColor="@color/white"
                         android:textSize="@dimen/w_25" />
@@ -145,6 +147,7 @@
                         android:background="@drawable/selecor_btn_kk"
                         android:focusable="true"
                         android:nextFocusRight="@id/but_off_deng1"
+                        android:nextFocusUp="@+id/but_off_lamp"
                         android:text="开"
                         android:textColor="@color/white"
                         android:textSize="@dimen/w_25" />
@@ -158,6 +161,7 @@
                         android:layout_marginLeft="@dimen/w_30"
                         android:layout_marginTop="@dimen/h_20"
                         android:layout_marginRight="@dimen/w_30"
+                        android:nextFocusRight="@id/but_on_deng1"
                         android:background="@drawable/selecor_btn_kk"
                         android:text="关"
                         android:textColor="@color/white"
