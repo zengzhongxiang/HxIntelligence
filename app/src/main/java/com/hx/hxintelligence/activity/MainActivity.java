@@ -692,9 +692,6 @@ public class MainActivity extends BaseActivity {
      */
     private  void getLogin(final String phone,final String pwd)
     {
-        loadingDialog = new LoadingDialog (this, getResources ().getString (R.string.loading_login), R.mipmap.ic_dialog_loading);
-        loadingDialog.show ();
-
         int random = KkUtil.getRandom();
         String time = KkUtil.getTimeStame ();
 
@@ -710,9 +707,6 @@ public class MainActivity extends BaseActivity {
         HttpUtil.hxpost (js_request.toString (),"",random,time, new ResultCallback<String> () {
             @Override
             public void success(String s) {
-                if (loadingDialog != null && loadingDialog.isShowing ()) {
-                    loadingDialog.dismiss ();
-                }
 
                 System.out.println("success=="+s);
                 Gson gson = new Gson();
@@ -730,9 +724,6 @@ public class MainActivity extends BaseActivity {
             @Override
             public void fail(String str) {
                 Toast.makeText (MainActivity.this, str, Toast.LENGTH_LONG).show ();
-                if (loadingDialog != null && loadingDialog.isShowing ()) {
-                    loadingDialog.dismiss ();
-                }
             }
         });
     }
