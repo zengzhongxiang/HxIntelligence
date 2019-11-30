@@ -51,12 +51,12 @@ public class HttpUtil {
 
     public static void hxpost(String content,String session, int random,String time,final ResultCallback<String> callback)
     {
-        String  serverStri = "https://api.geeklink.com.cn/iot/io.php?random="+random+"&time="+time;
+        String  serverStri = Constants.JL_URL+"?random="+random+"&time="+time;
 
         RequestParams requestParams = new RequestParams (serverStri);
-        requestParams.setHeader ("appid","a248f98c55bf917b39a70e2563fb19b3");
+        requestParams.setHeader ("appid",Constants.APPID);
         requestParams.setHeader ("session",session);
-        requestParams.setHeader ("sign",shaEnc256("appkey=241f2c786c3eb775&random="+random+"&time="+time));
+        requestParams.setHeader ("sign",shaEnc256("appkey="+Constants.APPSECRET+"&random="+random+"&time="+time));
         requestParams.setAsJsonContent(true);
 //        System.out.println ("js_request.toString()=="+js_request.toString());
         requestParams.setBodyContent(content);

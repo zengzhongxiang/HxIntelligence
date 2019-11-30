@@ -5,169 +5,279 @@
     android:layout_marginTop="@dimen/h_50"
     android:layout_marginBottom="@dimen/h_50">
 
-     <LinearLayout
+     <HorizontalScrollView
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_centerHorizontal="true"
-         android:orientation="horizontal"
          >
-          <RelativeLayout
-              android:layout_width="@dimen/w_300"
+          <LinearLayout
+              android:layout_width="wrap_content"
               android:layout_height="match_parent"
-              android:background="@color/fff26">
+              android:layout_centerHorizontal="true"
+              android:orientation="horizontal"
+              >
+               <RelativeLayout
+                   android:layout_width="@dimen/w_300"
+                   android:layout_height="match_parent"
+                   android:background="@color/fff26">
 
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_centerVertical="true"
-                   android:gravity="center_horizontal"
-                   android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="灯光1"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size_20" />
+                        android:layout_centerVertical="true"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/but_off_deng1"
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="卧室灯"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/text_size_20" />
+
+                         <Button
+                             android:id="@+id/but_off_deng1"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/h_60"
+                             android:layout_centerInParent="true"
+                             android:layout_marginLeft="@dimen/w_30"
+                             android:layout_marginTop="@dimen/h_30"
+                             android:layout_marginRight="@dimen/w_30"
+                             android:background="@drawable/selecor_btn_kk"
+                             android:focusable="true"
+                             android:nextFocusUp="@+id/but_off_lamp"
+                             android:nextFocusLeft="@+id/but_off_deng5"
+                             android:text="开"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/w_25" />
+
+
+                         <Button
+                             android:id="@+id/but_on_deng1"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/h_60"
+                             android:layout_centerInParent="true"
+                             android:layout_marginLeft="@dimen/w_30"
+                             android:layout_marginTop="@dimen/h_20"
+                             android:layout_marginRight="@dimen/w_30"
+                             android:background="@drawable/selecor_btn_kk"
+                             android:nextFocusLeft="@+id/but_on_deng5"
+                             android:text="关"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/w_25" />
+
+                    </LinearLayout>
+               </RelativeLayout>
+
+               <RelativeLayout
+                   android:layout_width="@dimen/w_300"
+                   android:layout_height="match_parent"
+                   android:layout_marginLeft="@dimen/w_30"
+                   android:background="@color/fff26">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/h_60"
-                        android:layout_centerInParent="true"
-                        android:layout_marginLeft="@dimen/w_30"
-                        android:layout_marginTop="@dimen/h_30"
-                        android:layout_marginRight="@dimen/w_30"
-                        android:background="@drawable/selecor_btn_kk"
-                        android:focusable="true"
-                        android:nextFocusUp="@+id/but_off_lamp"
-                        android:nextFocusLeft="@+id/but_off_deng3"
-                        android:text="开"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w_25" />
-
-
-                    <Button
-                        android:id="@+id/but_on_deng1"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/h_60"
-                        android:layout_centerInParent="true"
-                        android:layout_marginLeft="@dimen/w_30"
-                        android:layout_marginTop="@dimen/h_20"
-                        android:layout_marginRight="@dimen/w_30"
-                        android:background="@drawable/selecor_btn_kk"
-                        android:nextFocusLeft="@+id/but_on_deng3"
-                        android:text="关"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w_25" />
-
-               </LinearLayout>
-          </RelativeLayout>
-
-          <RelativeLayout
-              android:layout_width="@dimen/w_300"
-              android:layout_height="match_parent"
-              android:layout_marginLeft="@dimen/w_30"
-              android:background="@color/fff26">
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_centerVertical="true"
-                   android:gravity="center_horizontal"
-                   android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="灯光2"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size_20" />
+                        android:layout_centerVertical="true"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/but_off_deng2"
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="卫生间灯"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/text_size_20" />
+
+                         <Button
+                             android:id="@+id/but_off_deng2"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/h_60"
+                             android:layout_centerInParent="true"
+                             android:layout_marginLeft="@dimen/w_30"
+                             android:layout_marginTop="@dimen/h_30"
+                             android:layout_marginRight="@dimen/w_30"
+                             android:background="@drawable/selecor_btn_kk"
+                             android:focusable="true"
+                             android:nextFocusUp="@+id/but_off_lamp"
+                             android:text="开"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/w_25" />
+
+
+                         <Button
+                             android:id="@+id/but_on_deng2"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/h_60"
+                             android:layout_centerInParent="true"
+                             android:layout_marginLeft="@dimen/w_30"
+                             android:layout_marginTop="@dimen/h_20"
+                             android:layout_marginRight="@dimen/w_30"
+                             android:background="@drawable/selecor_btn_kk"
+                             android:text="关"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/w_25" />
+
+                    </LinearLayout>
+               </RelativeLayout>
+
+               <RelativeLayout
+                   android:layout_width="@dimen/w_300"
+                   android:layout_height="match_parent"
+                   android:layout_marginLeft="@dimen/w_30"
+                   android:background="@color/fff26">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/h_60"
-                        android:layout_centerInParent="true"
-                        android:layout_marginLeft="@dimen/w_30"
-                        android:layout_marginTop="@dimen/h_30"
-                        android:layout_marginRight="@dimen/w_30"
-                        android:background="@drawable/selecor_btn_kk"
-                        android:focusable="true"
-                        android:nextFocusUp="@+id/but_off_lamp"
-                        android:text="开"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w_25" />
-
-
-                    <Button
-                        android:id="@+id/but_on_deng2"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/h_60"
-                        android:layout_centerInParent="true"
-                        android:layout_marginLeft="@dimen/w_30"
-                        android:layout_marginTop="@dimen/h_20"
-                        android:layout_marginRight="@dimen/w_30"
-                        android:background="@drawable/selecor_btn_kk"
-                        android:text="关"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w_25" />
-
-               </LinearLayout>
-          </RelativeLayout>
-
-          <RelativeLayout
-              android:layout_width="@dimen/w_300"
-              android:layout_height="match_parent"
-              android:layout_marginLeft="@dimen/w_30"
-              android:background="@color/fff26">
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_centerVertical="true"
-                   android:gravity="center_horizontal"
-                   android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="灯光3"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size_20" />
+                        android:layout_centerVertical="true"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/but_off_deng3"
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="卫生间排风扇"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/text_size_20" />
+
+                         <Button
+                             android:id="@+id/but_off_deng3"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/h_60"
+                             android:layout_centerInParent="true"
+                             android:layout_marginLeft="@dimen/w_30"
+                             android:layout_marginTop="@dimen/h_30"
+                             android:layout_marginRight="@dimen/w_30"
+                             android:background="@drawable/selecor_btn_kk"
+                             android:focusable="true"
+                             android:nextFocusUp="@+id/but_off_lamp"
+                             android:text="开"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/w_25" />
+
+
+                         <Button
+                             android:id="@+id/but_on_deng3"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/h_60"
+                             android:layout_centerInParent="true"
+                             android:layout_marginLeft="@dimen/w_30"
+                             android:layout_marginTop="@dimen/h_20"
+                             android:layout_marginRight="@dimen/w_30"
+                             android:background="@drawable/selecor_btn_kk"
+                             android:text="关"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/w_25" />
+
+                    </LinearLayout>
+               </RelativeLayout>
+
+               <RelativeLayout
+                   android:layout_width="@dimen/w_300"
+                   android:layout_height="match_parent"
+                   android:layout_marginLeft="@dimen/w_30"
+                   android:background="@color/fff26">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/h_60"
-                        android:layout_centerInParent="true"
-                        android:layout_marginLeft="@dimen/w_30"
-                        android:layout_marginTop="@dimen/h_30"
-                        android:layout_marginRight="@dimen/w_30"
-                        android:background="@drawable/selecor_btn_kk"
-                        android:focusable="true"
-                        android:nextFocusRight="@id/but_off_deng1"
-                        android:nextFocusUp="@+id/but_off_lamp"
-                        android:text="开"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w_25" />
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="床头灯"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/text_size_20" />
+
+                         <Button
+                             android:id="@+id/but_off_deng4"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/h_60"
+                             android:layout_centerInParent="true"
+                             android:layout_marginLeft="@dimen/w_30"
+                             android:layout_marginTop="@dimen/h_30"
+                             android:layout_marginRight="@dimen/w_30"
+                             android:background="@drawable/selecor_btn_kk"
+                             android:focusable="true"
+                             android:nextFocusUp="@+id/but_off_lamp"
+                             android:text="开"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/w_25" />
 
 
-                    <Button
-                        android:id="@+id/but_on_deng3"
+                         <Button
+                             android:id="@+id/but_on_deng4"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/h_60"
+                             android:layout_centerInParent="true"
+                             android:layout_marginLeft="@dimen/w_30"
+                             android:layout_marginTop="@dimen/h_20"
+                             android:layout_marginRight="@dimen/w_30"
+                             android:background="@drawable/selecor_btn_kk"
+                             android:text="关"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/w_25" />
+
+                    </LinearLayout>
+               </RelativeLayout>
+
+               <RelativeLayout
+                   android:layout_width="@dimen/w_300"
+                   android:layout_height="match_parent"
+                   android:layout_marginLeft="@dimen/w_30"
+                   android:background="@color/fff26">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/h_60"
-                        android:layout_centerInParent="true"
-                        android:layout_marginLeft="@dimen/w_30"
-                        android:layout_marginTop="@dimen/h_20"
-                        android:layout_marginRight="@dimen/w_30"
-                        android:nextFocusRight="@id/but_on_deng1"
-                        android:background="@drawable/selecor_btn_kk"
-                        android:text="关"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w_25" />
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
-               </LinearLayout>
-          </RelativeLayout>
-     </LinearLayout>
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="书桌灯"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/text_size_20" />
+
+                         <Button
+                             android:id="@+id/but_off_deng5"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/h_60"
+                             android:layout_centerInParent="true"
+                             android:layout_marginLeft="@dimen/w_30"
+                             android:layout_marginTop="@dimen/h_30"
+                             android:layout_marginRight="@dimen/w_30"
+                             android:background="@drawable/selecor_btn_kk"
+                             android:focusable="true"
+                             android:nextFocusRight="@id/but_off_deng1"
+                             android:nextFocusUp="@+id/but_off_lamp"
+                             android:text="开"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/w_25" />
+
+
+                         <Button
+                             android:id="@+id/but_on_deng5"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/h_60"
+                             android:layout_centerInParent="true"
+                             android:layout_marginLeft="@dimen/w_30"
+                             android:layout_marginTop="@dimen/h_20"
+                             android:layout_marginRight="@dimen/w_30"
+                             android:nextFocusRight="@id/but_on_deng1"
+                             android:background="@drawable/selecor_btn_kk"
+                             android:text="关"
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/w_25" />
+
+                    </LinearLayout>
+               </RelativeLayout>
+          </LinearLayout>
+     </HorizontalScrollView>
 </RelativeLayout>

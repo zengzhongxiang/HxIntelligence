@@ -1,5 +1,6 @@
 package com.hx.hxintelligence;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -13,16 +14,23 @@ public class BaseActivity extends FragmentActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+        super.onCreate (savedInstanceState);
+//        strBuffer = new StringBuffer();
+//        strBuffer.setLength(0);
     }
 
     private String KEYCODE_any = "";
-    public boolean dispatchKeyEvent(KeyEvent event) {
-//        System.out.println ("event.getAction ()=="+event.getAction ());
-//        System.out.println ("event.getKeyCode ()=="+event.getKeyCode ());
 
+    @SuppressLint("RestrictedApi")
+    public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getAction () == 1) {
+            System.out.println ("event.getKeyCode ()==" + event.getKeyCode ());
+            //这里实现频道切换
+//            boolean bl = handlerMultKey(event.getKeyCode ());
+//            if(bl){
+//                return true;
+//            }
+
             switch (event.getKeyCode ()) {
                 case 19:
                     this.KEYCODE_any += "u";
@@ -53,16 +61,51 @@ public class BaseActivity extends FragmentActivity {
                     break;
             }
 
-            String pwd = "ududud";//SpApplyTools.getString ("SettingPassword", "uudd");
+            String pwd = "ccccc";//SpApplyTools.getString ("SettingPassword", "uudd");
             if (this.KEYCODE_any.endsWith (pwd)) {
                 this.KEYCODE_any = "";
-                    Intent i = new Intent (this, LoginActivity.class);
-                    startActivity (i);
-                    return true;
+                Intent i = new Intent (this, LoginActivity.class);
+                startActivity (i);
+                return true;
             }
 
         }
         return super.dispatchKeyEvent (event);
     }
 
+//    private StringBuffer strBuffer;
+//    private boolean handlerMultKey(int keyCode) {
+//        boolean bl = false;
+//        if (keyCode >= KeyEvent.KEYCODE_0
+//                && keyCode <= KeyEvent.KEYCODE_9 ) {
+//            bl =true;
+//            int iDigital = keyCode - KeyEvent.KEYCODE_0;
+//            strBuffer.append(String.valueOf(iDigital));
+//
+//            handler.sendEmptyMessageDelayed(100, 500);
+//        }
+//        return bl;
+//    }
+//
+//    public Handler handler = new Handler () {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            switch (msg.what) {
+//                case 100:
+//                   if(strBuffer.toString ().length ()>0) {
+//                       String keyCode = strBuffer.toString ();
+//                       for (int i = 0; i < ChannelConstants.channels.length; i++) {
+//                           if(keyCode.equals (String.valueOf(ChannelConstants.channels[i][0]))){
+//                               System.out.println ("strBuffer.toString ()==" + strBuffer.toString ()+"    channels[i][0]"+ChannelConstants.channels[i][0]+"    channels[i][1]"+ChannelConstants.channels[i][1]);
+//                               Toast.makeText (BaseActivity.this, String.valueOf(ChannelConstants.channels[i][1]), Toast.LENGTH_LONG).show ();
+//                               break;
+//                           }
+//                       }
+//                       strBuffer.setLength (0);
+//                   }
+//                    break;
+//            }
+//        }
+//
+//    };
 }

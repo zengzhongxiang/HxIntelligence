@@ -85,7 +85,9 @@ public class MainActivity extends BaseActivity {
     private LoadingDialog loadingDialog;
 
     private DeviceResponse.DeviceBean window_Device;//反馈窗帘
-    private DeviceResponse.DeviceBean lamp_Device;  //灯光
+    private DeviceResponse.DeviceBean lamp_Device;  //卧室开关
+    private DeviceResponse.DeviceBean lamp_second_Device;  //进门灯光
+
     private DeviceResponse.DeviceBean air_Device;  //空调开关
 
     private String session;
@@ -132,6 +134,11 @@ public class MainActivity extends BaseActivity {
         initDevice ();
 
         getMacro("正在获取所有模式，请稍后...",false);  //获取所有情景模式
+
+        String allMacro = SpApplyTools.getString (SpApplyTools.HX_ALL_MACRO,"");
+        if(!TextUtils.isEmpty (allMacro)) {
+            initMacro (allMacro);
+        }
     }
 
     private void initDevice() {
@@ -145,11 +152,11 @@ public class MainActivity extends BaseActivity {
                     if(device.getSub_type () == 97){   //反馈窗帘
                         window_Device = device;
                     }else if(device.getSub_type () == 57){  //轻触开关 3路
-                        lamp_Device = device;
-                    }else if(device.getSub_type () == 162){  //人体感应器
-
-                    }else if(device.getSub_type () == 51){  //反馈开关 3路
-                        lamp_Device = device;
+                        if("卧室开关".equals (device.getName ())) {
+                            lamp_Device = device;
+                        }else{
+                            lamp_second_Device = device;
+                        }
                     }else if(device.getSub_type () == 145){  //温控面板
                         air_Device = device;
                     }
@@ -160,9 +167,8 @@ public class MainActivity extends BaseActivity {
 
     int speed = 0;
     @Event(value = {R.id.but_off_lamp,R.id.but_on_lamp,R.id.but_stop_window,R.id.but_off_window,R.id.but_on_window,R.id.but_speed_air,R.id.but_temperature_add,R.id.but_temperature_reduce,
-            R.id.but_off_deng1,R.id.but_on_deng1,R.id.but_off_deng2,R.id.but_on_deng2,R.id.but_off_deng3,R.id.but_on_deng3,R.id.but_off_air,R.id.but_on_air,
-            R.id.but_air_refrigeration,R.id.but_air_heat,
-            R.id.but_mode/*,R.id.but_mode1,R.id.but_mode2,R.id.but_mode3*/}, type = View.OnClickListener.class)
+            R.id.but_off_deng1,R.id.but_on_deng1,R.id.but_off_deng2,R.id.but_on_deng2,R.id.but_off_deng3,R.id.but_on_deng3,R.id.but_off_deng4,R.id.but_on_deng4,R.id.but_off_deng5,R.id.but_on_deng5,
+            R.id.but_off_air,R.id.but_on_air, R.id.but_air_refrigeration,R.id.but_air_heat, R.id.but_mode/*,R.id.but_mode1,R.id.but_mode2,R.id.but_mode3*/}, type = View.OnClickListener.class)
     private void relativeClick(View view) {
         viewId = view.getId ();
         onClickBtn (viewId);
@@ -172,28 +178,44 @@ public class MainActivity extends BaseActivity {
         switch (viewId) {
             //灯光相关
             case R.id.but_off_lamp:   //全开
-                getDengDevice ("all",1,1,"正在开灯，请稍后...");
+                System.out.println ("lamp_second_Device=="+lamp_second_Device);
+                System.out.println ("lamp_Device=="+lamp_Device);
+                getDengDevice (lamp_second_Device,"all",0,1,"正在打开全部灯光，请稍后...",true);
+                getDengDevice (lamp_Device,"all",0,1,"正在打开全部灯光，请稍后...",false);
                 break;
             case R.id.but_on_lamp:  //全关
-                getDengDevice ("all",1,0,"正在关灯，请稍后...");
+                getDengDevice (lamp_second_Device,"all",0,0,"正在关闭全部灯光，请稍后...",true);
+                getDengDevice (lamp_Device,"all",0,0,"正在关闭全部灯光，请稍后...",false);
                 break;
-            case R.id.but_off_deng1:  //灯光1开
-                getDengDevice ("one",1,1,"正在开灯，请稍后...");
+            case R.id.but_off_deng1:  //卧室灯开
+                getDengDevice (lamp_second_Device,"one",3,1,"正在打开卧室灯光，请稍后...",true);
                 break;
-            case R.id.but_on_deng1:   //灯光1关
-                getDengDevice ("one",1,0,"正在关灯，请稍后...");
+            case R.id.but_on_deng1:   //卧室灯关
+                getDengDevice (lamp_second_Device,"one",3,0,"正在关闭卧室灯光，请稍后...",true);
                 break;
-            case R.id.but_off_deng2:  //灯光2开
-                getDengDevice ("one",2,1,"正在开灯，请稍后...");
+            case R.id.but_off_deng2:  //卫生间开灯
+                getDengDevice (lamp_second_Device,"one",1,1,"正在打开卫生间开灯，请稍后...",true);
                 break;
-            case R.id.but_on_deng2:   //灯光2关
-                getDengDevice ("one",2,0,"正在关灯，请稍后...");
+            case R.id.but_on_deng2:   //卫生间关灯
+                getDengDevice (lamp_second_Device,"one",1,0,"正在关闭卫生间关灯，请稍后...",true);
                 break;
-            case R.id.but_off_deng3:  //灯光3开
-                getDengDevice ("one",3,1,"正在开灯，请稍后...");
+            case R.id.but_off_deng3:  //打开排风扇
+                getDengDevice (lamp_second_Device,"one",2,1,"正在打开排风扇，请稍后...",true);
                 break;
-            case R.id.but_on_deng3:   //灯光3关
-                getDengDevice ("one",3,0,"正在关灯，请稍后...");
+            case R.id.but_on_deng3:   //关闭排风扇
+                getDengDevice (lamp_second_Device,"one",2,0,"正在关闭排风扇，请稍后...",true);
+                break;
+            case R.id.but_off_deng4:  //打开床头灯
+                getDengDevice (lamp_Device,"one",2,1,"正在打开床头灯，请稍后...",true);
+                break;
+            case R.id.but_on_deng4:  //关闭床头灯
+                getDengDevice (lamp_Device,"one",2,0,"正在关闭床头灯，请稍后...",true);
+                break;
+            case R.id.but_off_deng5:  //打开书桌灯
+                getDengDevice (lamp_Device,"one",3,1,"正在打开书桌灯，请稍后...",true);
+                break;
+            case R.id.but_on_deng5:  //关闭书桌灯
+                getDengDevice (lamp_Device,"one",3,0,"正在关闭书桌灯，请稍后...",true);
                 break;
 
             //情景模式相关
@@ -369,8 +391,6 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-
-
     /**
      * 控制反馈开关
      *
@@ -379,14 +399,15 @@ public class MainActivity extends BaseActivity {
      * switch 0:关  1:开
      *
      */
-    private void getDengDevice(String opt,int which,int switch_s ,String lodingTex)
+    private void getDengDevice(DeviceResponse.DeviceBean lampDevice,String opt,int which,int switch_s ,String lodingTex,boolean bl)
     {
-        if(lamp_Device == null){
-            Toast.makeText (MainActivity.this, "没有找到反馈开关，请重新登录再试", Toast.LENGTH_LONG).show ();
+        if(lampDevice == null){
             return;
         }
-        loadingDialog = new LoadingDialog (MainActivity.this, lodingTex, R.mipmap.ic_dialog_loading);
-        loadingDialog.show ();
+        if(bl) {
+            loadingDialog = new LoadingDialog (MainActivity.this, lodingTex, R.mipmap.ic_dialog_loading);
+            loadingDialog.show ();
+        }
 
         int random = KkUtil.getRandom();
         String time = KkUtil.getTimeStame ();
@@ -396,8 +417,8 @@ public class MainActivity extends BaseActivity {
             js_request.put("method", "ctrlDeviceRequest");//根据实际需求添加相应键值对
             js_request.put("seq", time+random);
             js_request.put("home_id", home_id);
-            js_request.put("md5", lamp_Device.getMd5 ());
-            js_request.put("sub_id", lamp_Device.getSub_id ());
+            js_request.put("md5", lampDevice.getMd5 ());
+            js_request.put("sub_id", lampDevice.getSub_id ());
             js_request.put("type", "fb");
 
             JSONObject js_data = new JSONObject();
@@ -524,10 +545,6 @@ public class MainActivity extends BaseActivity {
      */
     private void getMacro(String lodingTex,boolean bl)
     {
-//        if(lamp_Device == null){
-//            Toast.makeText (MainActivity.this, "没有找到反馈开关，请重新登录再试", Toast.LENGTH_LONG).show ();
-//            return;
-//        }
 
         int random = KkUtil.getRandom();
         String time = KkUtil.getTimeStame ();
@@ -548,28 +565,7 @@ public class MainActivity extends BaseActivity {
                 System.out.println("success=="+s);
                 LoginSession (s);
 
-                Gson gson = new Gson();
-                MacroResponse response = gson.fromJson(s, MacroResponse.class);
-                if("ok".equals (response.getAck ())) {   //成功
-                    List<MacroResponse.MacroInfo> datas = response.getMacros ();
-                    if(datas!=null && datas.size ()>0) {
-                        mode_all_linear.removeAllViews ();
-                        for (int i = 0; i <datas.size () ; i++) {
-                            MacroResponse.MacroInfo  macroInfo = datas.get (i);
-                            addButton(macroInfo,i,datas.size ());
-//                            if(i == 0){
-//                                but_mode1.setTag (macroInfo.getMacro_id ());
-//                                but_mode1.setText (macroInfo.getName ());
-//                            }else if(i == 1){
-//                                but_mode2.setTag (macroInfo.getMacro_id ());
-//                                but_mode2.setText (macroInfo.getName ());
-//                            }else if(i == 2){
-//                                but_mode3.setTag (macroInfo.getMacro_id ());
-//                                but_mode3.setText (macroInfo.getName ());
-//                            }
-                        }
-                    }
-                }
+                initMacro (s);
             }
 
             @Override
@@ -577,6 +573,23 @@ public class MainActivity extends BaseActivity {
 
             }
         });
+    }
+
+    private void initMacro(String s) {
+        Gson gson = new Gson();
+        MacroResponse response = gson.fromJson(s, MacroResponse.class);
+        if("ok".equals (response.getAck ())) {   //成功
+            SpApplyTools.putString (SpApplyTools.HX_ALL_MACRO,s);
+
+            List<MacroResponse.MacroInfo> datas = response.getMacros ();
+            if(datas!=null && datas.size ()>0) {
+                mode_all_linear.removeAllViews ();
+                for (int i = 0; i <datas.size () ; i++) {
+                    MacroResponse.MacroInfo  macroInfo = datas.get (i);
+                    addButton(macroInfo,i,datas.size ());
+                }
+            }
+        }
     }
 
     private Button firstBtn;
@@ -592,7 +605,7 @@ public class MainActivity extends BaseActivity {
         btnAdd.setBackgroundResource(R.drawable.selecor_btn_kk);
         btnAdd.setText (macroInfo.getName ());
         btnAdd.setTextColor (getResources ().getColor (R.color.white));
-        btnAdd.setTextSize (getResources ().getDimensionPixelSize(R.dimen.text_size_18));
+        btnAdd.setTextSize (18);
         btnAdd.setFocusable (true);
         btnAdd.setId (10101010+i);
         btnAdd.setNextFocusUpId (R.id.but_mode);
@@ -716,14 +729,12 @@ public class MainActivity extends BaseActivity {
                     session = response.getSession ();
                     SpApplyTools.putString (SpApplyTools.HX_SESSION,session);
                     onClickBtn (viewId);
-                }else {
-                    Toast.makeText (MainActivity.this, UnicodeUtil.decode (response.getMsg ()), Toast.LENGTH_LONG).show ();
                 }
             }
 
             @Override
             public void fail(String str) {
-                Toast.makeText (MainActivity.this, str, Toast.LENGTH_LONG).show ();
+//                Toast.makeText (MainActivity.this, str, Toast.LENGTH_LONG).show ();
             }
         });
     }
@@ -762,8 +773,10 @@ public class MainActivity extends BaseActivity {
                 if("ok".equals (response.getAck ())) {   //成功
                     SpApplyTools.putString (SpApplyTools.HX_ALL_DEVICE,s);
                     initDevice();
-                }else {
-                    Toast.makeText (MainActivity.this, UnicodeUtil.decode (response.getMsg ()), Toast.LENGTH_LONG).show ();
+                }else{
+                    if("no devices".equals (response.getMsg ())) {
+                        Toast.makeText (MainActivity.this, "当前房间没有找到设备", Toast.LENGTH_LONG).show ();
+                    }
                 }
             }
 

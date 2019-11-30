@@ -18,6 +18,7 @@ public class SpApplyTools {
     public static String HX_HOME_ID = "hx_home_id"; //家庭ID
     public static String HX_HOME_CREATE = "hx_home_create"; //家庭中控的id，控制情景和控制分机都需要用到。注：情景是保存在中控中的，所以控制情景需要用到该id
     public static String HX_ALL_DEVICE = "hx_all_device";   //当前家庭下所有设备的JSON
+    public static String HX_ALL_MACRO = "hx_all_macro";   //当前家庭下所有的情景模式
     public static String HX_AIR_TEMPERATURE = "hx_air_temperature";   //保存空调当前温度
     public static String HX_AIR_SPEED = "hx_air_speed";   //保存空调当前风速
 

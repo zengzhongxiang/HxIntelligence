@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.gson.Gson;
+import com.hx.hxintelligence.BaseActivity;
 import com.hx.hxintelligence.MainActivity2;
 import com.hx.hxintelligence.R;
 import com.hx.hxintelligence.response.DeviceResponse;
