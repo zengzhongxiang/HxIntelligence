@@ -1,13 +1,14 @@
 package com.hx.hxintelligence.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,12 +23,13 @@ import com.hx.hxintelligence.response.AirResponse;
 import com.hx.hxintelligence.response.BaseResponse;
 import com.hx.hxintelligence.response.DeviceResponse;
 import com.hx.hxintelligence.response.MacroResponse;
+import com.hx.hxintelligence.response.QRcodeResponse;
 import com.hx.hxintelligence.response.SessionResponse;
 import com.hx.hxintelligence.utils.HttpUtil;
+import com.hx.hxintelligence.utils.ImageUtil;
 import com.hx.hxintelligence.utils.KkUtil;
 import com.hx.hxintelligence.utils.ResultCallback;
 import com.hx.hxintelligence.utils.SpApplyTools;
-import com.hx.hxintelligence.utils.UnicodeUtil;
 import com.hx.hxintelligence.widget.AirTempView;
 import com.hx.hxintelligence.widget.LoadingDialog;
 import com.hx.hxintelligence.widget.WeighingMeterView;
@@ -52,11 +54,16 @@ public class MainActivity extends BaseActivity {
     private RelativeLayout window_layout;  //窗帘布局
     @ViewInject(R.id.air_layout)
     private RelativeLayout air_layout;   //空调布局
+    @ViewInject(R.id.linear_qr)
+    private LinearLayout linear_qr;  //客控二维码
 
     @ViewInject(R.id.mode_all_linear)
     private LinearLayout mode_all_linear;   //模式布局
     @ViewInject(R.id.but_mode)
     private Button but_mode;
+
+    @ViewInject(R.id.qr_img)   //二维码图片
+    private ImageView qr_img;
 
 //    @ViewInject(R.id.but_mode1)
 //    private Button but_mode1;
@@ -132,6 +139,7 @@ public class MainActivity extends BaseActivity {
 
         getDevice();  //每次启动进来重新获取当前家庭里面的设备
         initDevice ();
+        getQRcode();   //获取二维码
 
         getMacro("正在获取所有模式，请稍后...",false);  //获取所有情景模式
 
@@ -139,6 +147,17 @@ public class MainActivity extends BaseActivity {
         if(!TextUtils.isEmpty (allMacro)) {
             initMacro (allMacro);
         }
+
+//        String imgRes =  SpApplyTools.getString (SpApplyTools.HX_QR_IMAGE,"");
+//        if(!TextUtils.isEmpty (imgRes)){
+//            Bitmap bitmap = base64ToBitmap(imgRes);
+//            System.out.println ("bitmap=="+bitmap);
+//            if(bitmap!=null) {
+//                SpApplyTools.putString (SpApplyTools.HX_QR_IMAGE,imgRes);
+//                linear_qr.setVisibility (View.VISIBLE);
+//                qr_img.setImageBitmap (bitmap);
+//            }
+//        }
     }
 
     private void initDevice() {
@@ -729,6 +748,7 @@ public class MainActivity extends BaseActivity {
                     session = response.getSession ();
                     SpApplyTools.putString (SpApplyTools.HX_SESSION,session);
                     onClickBtn (viewId);
+                    getQRcode();
                 }
             }
 
@@ -787,4 +807,52 @@ public class MainActivity extends BaseActivity {
         });
 
     }
+
+    /**
+     * 获取酒店当前房间的二维码
+     */
+    private void getQRcode()
+    {
+
+        int random = KkUtil.getRandom();
+        String time = KkUtil.getTimeStame ();
+
+        JSONObject js_request = new JSONObject();//服务器需要传参的json对象
+        try {
+            js_request.put("method", "getQRcode");//根据实际需求添加相应键值对
+            js_request.put("seq", time+random);
+            js_request.put("home_id", home_id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println ("js_request=="+js_request);
+        HttpUtil.hxpost (js_request.toString (),session,random,time, new ResultCallback<String> () {
+            @Override
+            public void success(String s) {
+                System.out.println("success=="+s);
+//                LoginSession (s);
+                Gson gson = new Gson();
+                QRcodeResponse response = gson.fromJson(s, QRcodeResponse.class);
+                if("ok".equals (response.getAck ())) {   //成功
+                    Bitmap bitmap = ImageUtil.base64ToBitmap(response.getRes ());
+                    if(bitmap!=null) {
+//                        SpApplyTools.putString (SpApplyTools.HX_QR_IMAGE,response.getRes ());
+                        linear_qr.setVisibility (View.VISIBLE);
+                        qr_img.setImageBitmap (bitmap);
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void fail(String str) {
+
+            }
+        });
+    }
+
+
+
 }

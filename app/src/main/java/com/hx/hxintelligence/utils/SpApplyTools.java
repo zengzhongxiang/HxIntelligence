@@ -21,6 +21,7 @@ public class SpApplyTools {
     public static String HX_ALL_MACRO = "hx_all_macro";   //当前家庭下所有的情景模式
     public static String HX_AIR_TEMPERATURE = "hx_air_temperature";   //保存空调当前温度
     public static String HX_AIR_SPEED = "hx_air_speed";   //保存空调当前风速
+//    public static String HX_QR_IMAGE = "hx_qr_image";   //二维码数据
 
     public static void putString(String key, String value) {
         Editor editor = sp.edit();
