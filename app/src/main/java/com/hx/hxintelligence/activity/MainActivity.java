@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
@@ -21,6 +22,7 @@ import com.hx.hxintelligence.BaseActivity;
 import com.hx.hxintelligence.R;
 import com.hx.hxintelligence.response.AirResponse;
 import com.hx.hxintelligence.response.BaseResponse;
+import com.hx.hxintelligence.response.DengResponse;
 import com.hx.hxintelligence.response.DeviceResponse;
 import com.hx.hxintelligence.response.MacroResponse;
 import com.hx.hxintelligence.response.QRcodeResponse;
@@ -42,6 +44,7 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ContentView(R.layout.activity_main)
@@ -57,6 +60,8 @@ public class MainActivity extends BaseActivity {
     @ViewInject(R.id.linear_qr)
     private LinearLayout linear_qr;  //客控二维码
 
+    @ViewInject(R.id.deng_all_linear)
+    private LinearLayout deng_all_linear;   //灯光布局
     @ViewInject(R.id.mode_all_linear)
     private LinearLayout mode_all_linear;   //模式布局
     @ViewInject(R.id.but_mode)
@@ -73,7 +78,9 @@ public class MainActivity extends BaseActivity {
 //    private Button but_mode3;
 
     private int viewId = -1;
-
+    private final static int DENG_ON = 2001;    //灯光打开
+    private final static int DENG_OFF = 2002;   //灯光关闭
+    private final static int MACRO_INFO = 2003;   //情景模式
 
     //灯光相关
     @ViewInject(R.id.but_off_lamp)
@@ -92,10 +99,13 @@ public class MainActivity extends BaseActivity {
     private LoadingDialog loadingDialog;
 
     private DeviceResponse.DeviceBean window_Device;//反馈窗帘
-    private DeviceResponse.DeviceBean lamp_Device;  //卧室开关
-    private DeviceResponse.DeviceBean lamp_second_Device;  //进门灯光
+//    private DeviceResponse.DeviceBean lamp_Device;  //卧室开关
+//    private DeviceResponse.DeviceBean lamp_second_Device;  //进门灯光
 
     private DeviceResponse.DeviceBean air_Device;  //空调开关
+
+    private List<DeviceResponse.DeviceBean> deviceBeans = new ArrayList<> ();   //所有的灯光
+    List<DengResponse> listDengs = new ArrayList<> ();   //所有的灯光个数列表
 
     private String session;
     private String home_id;
@@ -167,26 +177,29 @@ public class MainActivity extends BaseActivity {
         if(response!=null){
             List<DeviceResponse.DeviceBean> devices = response.getDevices ();
             if(devices!=null){
+                deviceBeans.clear ();
+                listDengs.clear ();
                 for (DeviceResponse.DeviceBean device:devices) {
                     if(device.getSub_type () == 97){   //反馈窗帘
                         window_Device = device;
-                    }else if(device.getSub_type () == 57){  //轻触开关 3路
-                        if("卧室开关".equals (device.getName ())) {
-                            lamp_Device = device;
-                        }else{
-                            lamp_second_Device = device;
-                        }
+                    }else if(device.getSub_type () == 57 || device.getSub_type () == 51){  //轻触开关 3路   反馈开关
+                        deviceBeans.add (device);
+//                        if("0".equals (device.getIn_room_order ())) {   //设备在房间中排列的序号
+//                            lamp_Device = device;
+//                        }else{
+//                            lamp_second_Device = device;
+//                        }
                     }else if(device.getSub_type () == 145){  //温控面板
                         air_Device = device;
                     }
                 }
+                addDeng (deviceBeans);
             }
         }
     }
 
     int speed = 0;
     @Event(value = {R.id.but_off_lamp,R.id.but_on_lamp,R.id.but_stop_window,R.id.but_off_window,R.id.but_on_window,R.id.but_speed_air,R.id.but_temperature_add,R.id.but_temperature_reduce,
-            R.id.but_off_deng1,R.id.but_on_deng1,R.id.but_off_deng2,R.id.but_on_deng2,R.id.but_off_deng3,R.id.but_on_deng3,R.id.but_off_deng4,R.id.but_on_deng4,R.id.but_off_deng5,R.id.but_on_deng5,
             R.id.but_off_air,R.id.but_on_air, R.id.but_air_refrigeration,R.id.but_air_heat, R.id.but_mode/*,R.id.but_mode1,R.id.but_mode2,R.id.but_mode3*/}, type = View.OnClickListener.class)
     private void relativeClick(View view) {
         viewId = view.getId ();
@@ -194,52 +207,37 @@ public class MainActivity extends BaseActivity {
     }
 
     private void onClickBtn(int viewId) {
+        System.out.println ("viewId=="+viewId);
         switch (viewId) {
             //灯光相关
             case R.id.but_off_lamp:   //全开
-                System.out.println ("lamp_second_Device=="+lamp_second_Device);
-                System.out.println ("lamp_Device=="+lamp_Device);
-                getDengDevice (lamp_second_Device,"all",0,1,"正在打开全部灯光，请稍后...",true);
-                getDengDevice (lamp_Device,"all",0,1,"正在打开全部灯光，请稍后...",false);
+                if(deviceBeans!=null && deviceBeans.size ()>0){
+                    for (int i = 0; i < deviceBeans.size (); i++) {
+                        DeviceResponse.DeviceBean deviceBean = deviceBeans.get (i);
+                        getDengDevice (deviceBean.getMd5 (),deviceBean.getSub_id (),"all",0,1,"正在打开全部灯光，请稍后...",i == 0 ? true:false);
+                    }
+                }
+                break;
+            case DENG_ON:   //灯光打开
+                getDengDevice (dengInfo.getMd5 (),dengInfo.getSub_id (),"one",dengInfo.getRoad (),1,"正在打开"+dengInfo.getName ()+"，请稍后...",true);
+                break;
+            case DENG_OFF:  //灯光关闭
+                getDengDevice (dengInfo.getMd5 (),dengInfo.getSub_id (),"one",dengInfo.getRoad (),0,"正在关闭"+dengInfo.getName ()+"，请稍后...",true);
                 break;
             case R.id.but_on_lamp:  //全关
-                getDengDevice (lamp_second_Device,"all",0,0,"正在关闭全部灯光，请稍后...",true);
-                getDengDevice (lamp_Device,"all",0,0,"正在关闭全部灯光，请稍后...",false);
+                if(deviceBeans!=null && deviceBeans.size ()>0){
+                    for (int i = 0; i < deviceBeans.size (); i++) {
+                        DeviceResponse.DeviceBean deviceBean = deviceBeans.get (i);
+                        getDengDevice (deviceBean.getMd5 (),deviceBean.getSub_id (),"all",0,0,"正在关闭全部灯光，请稍后...",i == 0 ? true:false);
+                    }
+                }
                 break;
-            case R.id.but_off_deng1:  //卧室灯开
-                getDengDevice (lamp_second_Device,"one",3,1,"正在打开卧室灯光，请稍后...",true);
-                break;
-            case R.id.but_on_deng1:   //卧室灯关
-                getDengDevice (lamp_second_Device,"one",3,0,"正在关闭卧室灯光，请稍后...",true);
-                break;
-            case R.id.but_off_deng2:  //卫生间开灯
-                getDengDevice (lamp_second_Device,"one",1,1,"正在打开卫生间开灯，请稍后...",true);
-                break;
-            case R.id.but_on_deng2:   //卫生间关灯
-                getDengDevice (lamp_second_Device,"one",1,0,"正在关闭卫生间关灯，请稍后...",true);
-                break;
-            case R.id.but_off_deng3:  //打开排风扇
-                getDengDevice (lamp_second_Device,"one",2,1,"正在打开排风扇，请稍后...",true);
-                break;
-            case R.id.but_on_deng3:   //关闭排风扇
-                getDengDevice (lamp_second_Device,"one",2,0,"正在关闭排风扇，请稍后...",true);
-                break;
-            case R.id.but_off_deng4:  //打开床头灯
-                getDengDevice (lamp_Device,"one",2,1,"正在打开床头灯，请稍后...",true);
-                break;
-            case R.id.but_on_deng4:  //关闭床头灯
-                getDengDevice (lamp_Device,"one",2,0,"正在关闭床头灯，请稍后...",true);
-                break;
-            case R.id.but_off_deng5:  //打开书桌灯
-                getDengDevice (lamp_Device,"one",3,1,"正在打开书桌灯，请稍后...",true);
-                break;
-            case R.id.but_on_deng5:  //关闭书桌灯
-                getDengDevice (lamp_Device,"one",3,0,"正在关闭书桌灯，请稍后...",true);
-                break;
-
             //情景模式相关
             case  R.id.but_mode:
                 getMacro("正在获取所有模式，请稍后...",true);
+                break;
+            case MACRO_INFO:  //情景模式开关
+                getCtrlMacro (macro_id, "请稍后...");
                 break;
 //            case  R.id.but_mode1:
 //                Object id = but_mode1.getTag ();
@@ -418,9 +416,9 @@ public class MainActivity extends BaseActivity {
      * switch 0:关  1:开
      *
      */
-    private void getDengDevice(DeviceResponse.DeviceBean lampDevice,String opt,int which,int switch_s ,String lodingTex,boolean bl)
+    private void getDengDevice(String Md5,int sub_id,String opt,int which,int switch_s ,String lodingTex,boolean bl)
     {
-        if(lampDevice == null){
+        if(Md5 == null ){
             return;
         }
         if(bl) {
@@ -436,8 +434,8 @@ public class MainActivity extends BaseActivity {
             js_request.put("method", "ctrlDeviceRequest");//根据实际需求添加相应键值对
             js_request.put("seq", time+random);
             js_request.put("home_id", home_id);
-            js_request.put("md5", lampDevice.getMd5 ());
-            js_request.put("sub_id", lampDevice.getSub_id ());
+            js_request.put("md5", Md5);
+            js_request.put("sub_id", sub_id);
             js_request.put("type", "fb");
 
             JSONObject js_data = new JSONObject();
@@ -612,6 +610,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private Button firstBtn;
+    private String macro_id;
     private void addButton(MacroResponse.MacroInfo  macroInfo,int i,int maxleng){
         Button btnAdd = new Button(MainActivity.this);
         LinearLayout.LayoutParams btnAddParam = new LinearLayout.LayoutParams(
@@ -637,6 +636,8 @@ public class MainActivity extends BaseActivity {
             public void onClick(View v) {
                 Object id = v.getTag ();
                 if(id!=null) {
+                    viewId = MACRO_INFO;
+                    macro_id = id.toString();
                     getCtrlMacro (id.toString (), "请稍后...");
                 }
             }
@@ -651,6 +652,67 @@ public class MainActivity extends BaseActivity {
         if(i == maxleng-1){
             firstBtn.setNextFocusLeftId (10101010+i);
             btnAdd.setNextFocusRightId (10101010);
+        }
+    }
+
+    private DengResponse dengInfo = new DengResponse ();
+    public void addDeng(List<DeviceResponse.DeviceBean> deviceBeans){
+        deng_all_linear.removeAllViews ();
+        if(deviceBeans!=null && deviceBeans.size ()>0) {
+            for (int i = 0; i < deviceBeans.size (); i++) {
+                DeviceResponse.DeviceBean deviceBean = deviceBeans.get (i);
+                List<DeviceResponse.DeviceBean.FbsInfo> fbs = deviceBeans.get (i).getFbs ();
+                System.out.println ("fbs=="+fbs);
+                if(fbs!=null && fbs.size ()>0) {
+                    System.out.println ("fbs.size ()=="+fbs.size ());
+                    for (int j = 0; j < fbs.size (); j++) {
+                        DeviceResponse.DeviceBean.FbsInfo fbsInfo = fbs.get (j);
+                        DengResponse dengResponse = new DengResponse ();
+                        dengResponse.setMd5 (deviceBean.getMd5 ());
+                        dengResponse.setSub_id (deviceBean.getSub_id ());
+                        if(fbsInfo!=null) {
+                            dengResponse.setName (fbsInfo.getName ());
+                            dengResponse.setRoad (fbsInfo.getRoad ());
+                        }
+                        listDengs.add (dengResponse);
+                    }
+                }
+            }
+        }
+        if(listDengs!=null && listDengs.size ()>0){
+            for (int i = 0; i < listDengs.size (); i++) {
+                final DengResponse dengResponse = listDengs.get (i);
+                RelativeLayout relativeLayout =  (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.lamp_info, null);
+                TextView deng_name_txt = relativeLayout.findViewById (R.id.deng_name_txt);
+                deng_name_txt.setText (dengResponse.getName ());
+                deng_all_linear.addView (relativeLayout);
+
+                Button but_on_deng = relativeLayout.findViewById (R.id.but_on_deng);
+                but_on_deng.setOnClickListener (new View.OnClickListener () {
+                    @Override
+                    public void onClick(View v) {
+                        dengInfo.setName (dengResponse.getName());
+                        dengInfo.setSub_id (dengResponse.getSub_id());
+                        dengInfo.setMd5 (dengResponse.getMd5());
+                        dengInfo.setRoad (dengResponse.getRoad());
+                        viewId = DENG_ON;
+                        getDengDevice (dengResponse.getMd5 (),dengResponse.getSub_id (),"one",dengResponse.getRoad (),1,"正在打开"+dengResponse.getName ()+"，请稍后...",true);
+                    }
+                });
+
+                Button but_off_deng = relativeLayout.findViewById (R.id.but_off_deng);
+                but_off_deng.setOnClickListener (new View.OnClickListener () {
+                    @Override
+                    public void onClick(View v) {
+                        dengInfo.setName (dengResponse.getName());
+                        dengInfo.setSub_id (dengResponse.getSub_id());
+                        dengInfo.setMd5 (dengResponse.getMd5());
+                        dengInfo.setRoad (dengResponse.getRoad());
+                        viewId = DENG_OFF;
+                        getDengDevice (dengResponse.getMd5 (),dengResponse.getSub_id (),"one",dengResponse.getRoad (),0,"正在关闭"+dengResponse.getName ()+"，请稍后...",true);
+                    }
+                });
+            }
         }
     }
 

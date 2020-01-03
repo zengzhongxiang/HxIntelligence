@@ -1,0 +1,397 @@
+<!-- clipChildren clipToPadding 不要忘记了，不然移动的边框无法显示出来 -->
+<!-- 不要模仿我使用 margin来定位item，我只是测试适配-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content11"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <ImageView
+        android:id="@+id/bg_iv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:background="@mipmap/zy_bg"
+        android:scaleType="fitXY" />
+
+    <RelativeLayout
+        android:id="@+id/top_linear"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w_190"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <ImageView
+            android:id="@+id/logo_img"
+            android:layout_width="@dimen/w_100"
+            android:layout_height="@dimen/w_100"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/h_66" />
+
+        <LinearLayout
+            android:id="@+id/linear_tq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w_50"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/time_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="20:01"
+                android:textColor="@color/while_color"
+                android:textSize="@dimen/w_100" />
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="@dimen/h_75"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/w_50"
+                android:background="@color/while_color" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/w_27"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/date_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="2019-06-10"
+                    android:textColor="@color/while_color"
+                    android:textSize="@dimen/w_25" />
+
+                <TextView
+                    android:id="@+id/week_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/h_10"
+                    android:text="星期三"
+                    android:textColor="@color/while_color"
+                    android:textSize="@dimen/w_30" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="@dimen/h_75"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/w_27"
+                android:background="@color/while_color" />
+
+            <ImageView
+                android:id="@+id/tq_img"
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="17px" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/w_27"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/temperature_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/while_color"
+                    android:textSize="@dimen/w_30" />
+
+                <TextView
+                    android:id="@+id/region_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/while_color"
+                    android:textSize="@dimen/w_30" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/logo_img"
+            android:layout_toLeftOf="@+id/linear_tq"
+            android:layout_centerVertical="true">
+            <com.hxsoft.laucher.view.MarqueeTextviewNofocus
+                android:id="@+id/message_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/w_100"
+                android:layout_marginEnd="@dimen/w_100"
+                android:textColor="@color/while_color"
+                android:text="尊敬的贵宾您好,欢迎您光临沈月堂足道！"
+                android:textSize="@dimen/w_40" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_linear"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w_190"
+        android:layout_alignParentBottom="true"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <RelativeLayout
+            android:layout_width="700px"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+        <com.hxsoft.laucher.view.MarqueeTextviewNofocus
+            android:id="@+id/message_txt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/w_100"
+            android:layout_marginEnd="@dimen/w_100"
+            android:textColor="@color/while_color"
+            android:text="欢迎光临沈月堂足道！"
+            android:textSize="@dimen/w_40" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/w_75"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/phone_ic"
+                />
+            <TextView
+                android:id="@+id/txt_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/h_10"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/w_30"
+                android:text="预定电话：0734-5428588"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.open.androidtvwidget.view.SmoothHorizontalScrollView
+        android:id="@+id/hscroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <com.open.androidtvwidget.view.RelativeMainLayout
+            android:id="@+id/main_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/w_50" >
+			
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/recyclerview_rlayt_1"
+                android:layout_width="@dimen/w_409"
+                android:layout_height="@dimen/h_669"
+                android:layout_marginLeft="@dimen/w_75"
+                android:layout_marginTop="@dimen/h_204"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                app:isReflect="false"
+                app:isShape="true"
+                app:radius="@dimen/w_10" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/zy_a1" />
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/recyclerview_rlayt_2"
+                android:layout_width="@dimen/w_409"
+                android:layout_height="@dimen/h_669"
+                android:layout_toRightOf="@+id/recyclerview_rlayt_1"
+                android:layout_marginLeft="@dimen/w_30"
+                android:layout_marginTop="@dimen/h_204"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                app:isReflect="false"
+                app:isShape="true"
+                android:nextFocusRight="@+id/recyclerview_rlayt_3"
+                app:radius="@dimen/w_10" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/zy_a2" />
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/recyclerview_rlayt_3"
+                android:layout_width="@dimen/w_280"
+                android:layout_height="@dimen/h_318"
+                android:layout_toRightOf="@+id/recyclerview_rlayt_2"
+                android:layout_marginLeft="@dimen/w_30"
+                android:layout_marginTop="@dimen/h_204"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                app:isShape="true"
+                app:radius="@dimen/w_10">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/zy_a3" />
+
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/recyclerview_rlayt_4"
+                android:layout_width="@dimen/w_280"
+                android:layout_height="@dimen/h_318"
+                android:layout_toRightOf="@+id/recyclerview_rlayt_2"
+                android:layout_marginLeft="@dimen/w_30"
+                android:layout_marginTop="@dimen/h_550"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                app:isReflect="false"
+                app:isShape="true"
+                app:radius="@dimen/w_10">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/zy_a4" />
+
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+            <!-- 222-->
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/recyclerview_rlayt_5"
+                android:layout_width="@dimen/w_280"
+                android:layout_height="@dimen/h_318"
+                android:layout_toRightOf="@+id/recyclerview_rlayt_3"
+                android:layout_marginLeft="@dimen/w_30"
+                android:layout_marginTop="@dimen/h_204"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                app:isShape="true"
+                app:radius="@dimen/w_10">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/zy_a5" />
+
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/recyclerview_rlayt_6"
+                android:layout_width="@dimen/w_280"
+                android:layout_height="@dimen/h_318"
+                android:layout_toRightOf="@+id/recyclerview_rlayt_3"
+                android:layout_marginLeft="@dimen/w_30"
+                android:layout_marginTop="@dimen/h_550"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                app:isReflect="false"
+                app:isShape="true"
+                app:radius="@dimen/w_10">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/zy_a6" />
+
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+            <!-- 333-->
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/recyclerview_rlayt_7"
+                android:layout_width="@dimen/w_280"
+                android:layout_height="@dimen/h_318"
+                android:layout_toRightOf="@+id/recyclerview_rlayt_5"
+                android:layout_marginLeft="@dimen/w_30"
+                android:layout_marginTop="@dimen/h_204"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                app:isShape="true"
+                app:radius="@dimen/w_10">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/zy_a7" />
+
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+            <com.open.androidtvwidget.view.ReflectItemView
+                android:id="@+id/recyclerview_rlayt_8"
+                android:layout_width="@dimen/w_280"
+                android:layout_height="@dimen/h_318"
+                android:layout_toRightOf="@+id/recyclerview_rlayt_5"
+                android:layout_marginLeft="@dimen/w_30"
+                android:layout_marginTop="@dimen/h_550"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                app:isReflect="false"
+                app:isShape="true"
+                app:radius="@dimen/w_10">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/zy_a8" />
+
+            </com.open.androidtvwidget.view.ReflectItemView>
+
+        </com.open.androidtvwidget.view.RelativeMainLayout>
+    </com.open.androidtvwidget.view.SmoothHorizontalScrollView>
+
+    <!-- 最顶层边框 -->
+    <com.open.androidtvwidget.view.MainUpView
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:upImageRes="@drawable/test_rectangle" />
+
+</RelativeLayout>

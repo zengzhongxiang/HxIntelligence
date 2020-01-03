@@ -146,7 +146,7 @@ public class DeviceResponse extends BaseResponse {
 
         public class FbsInfo{
             private String name;   //FB某路开关的名字，有多少路就有多少个名字
-            private String road;   //表示第几路
+            private int road;   //表示第几路
 
             public String getName() {
                 return name;
@@ -156,11 +156,11 @@ public class DeviceResponse extends BaseResponse {
                 this.name = name;
             }
 
-            public String getRoad() {
+            public int getRoad() {
                 return road;
             }
 
-            public void setRoad(String road) {
+            public void setRoad(int road) {
                 this.road = road;
             }
         }

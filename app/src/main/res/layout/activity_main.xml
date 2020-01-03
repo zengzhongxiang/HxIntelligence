@@ -79,8 +79,8 @@
                         android:layout_height="@dimen/w_100">
 
                         <ImageView
-                            android:layout_width="@dimen/w_100"
-                            android:layout_height="@dimen/w_100"
+                            android:layout_width="@dimen/w_120"
+                            android:layout_height="@dimen/w_120"
                             android:layout_marginTop="@dimen/h_20"
                             android:background="@mipmap/deng" />
                     </RelativeLayout>
