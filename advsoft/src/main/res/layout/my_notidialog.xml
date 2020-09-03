@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="20dp"
+    android:gravity="center_vertical">
+
+    <com.adv.hxsoft.widget.FlowRadioGroup
+        android:id="@+id/position_group"
+        android:layout_width="@dimen/w_300"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/p_left_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/w_30"
+            android:text="左上" />
+
+        <RadioButton
+            android:id="@+id/p_left_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/w_30"
+            android:text="左下" />
+
+        <RadioButton
+            android:id="@+id/p_right_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/w_30"
+            android:text="右上" />
+
+        <RadioButton
+            android:id="@+id/p_right_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/w_30"
+            android:text="右下" />
+
+        <RadioButton
+            android:id="@+id/p_fenpin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/w_30"
+            android:text="左右分屏" />
+    </com.adv.hxsoft.widget.FlowRadioGroup>
+</RelativeLayout>

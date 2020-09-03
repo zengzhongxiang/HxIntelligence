@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fff">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="main_color">#fffda903</color>
+    <color name="white">#ffffffff</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="fff_00">#ffffff</color>
+    <color name="fff15">#26ffffff</color>
+    <color name="black_00">#000000</color>
+    <color name="setting_bg">#4D100964</color>
+    <color name="hui_color">#a0a0a0</color>
+    <color name="blue_color">#436EEE</color>
+
+    <color name="state_background">#cc000000</color>
+    <color name="white_60">#9affffff</color>
+    <color name="lan_color">#7EC0EE</color>
+    <color name="welcome_txt_color">#DDD1AD</color>
+    <color name="manage_bg_color">#F8F8FF</color>
+
+    <!--百分之60透明度的黑色-->
+    <color name="common_black_color_cc">#CC000000</color>
+    <color name="while_color">#FFFFFF</color>
+    <color name="yl_main_color">#4a412f</color>
+    <color name="df_text_color">#f7deaf</color>
+
+    <color name="black_tm_30_color">#4D000000</color>
+    <color name="black_tm_90_color">#E6ffffff</color>
+
+    <color name="circle_color">#6DDD22</color>
+    <color name="rect_color">#448CBB</color>
+    <color name="triangle_color">#EE5C42</color>
+    <color name="manager_focused_bg_color">#4D000000</color>
+    <color name="manager_txt_focused_bg_color">#80000000</color>
+    <!-- 线 -->
+    <color name="line_color">#dadee5</color>
+    <!-- 浅灰  基本都是用在不能操作的 -->
+    <color name="light_grey_color">#bcc1cc</color>
+
+    <color name="welcome_txt_color_cc">#66000000</color>
+    <color name="hotel_txt_color">#B9976B</color>
+
+    <!--100% —FF-->
+    <!--95% — F2-->
+    <!--90% — E6-->
+    <!--85% — D9-->
+    <!--80% — CC-->
+    <!--75% — BF-->
+    <!--70% — B3-->
+    <!--65% — A6-->
+    <!--60% — 99-->
+    <!--55% — 8C-->
+    <!--50% — 80-->
+    <!--45% — 73-->
+    <!--40% — 66-->
+    <!--35% — 59-->
+    <!--30% — 4D-->
+    <!--25% — 40-->
+    <!--20% — 33-->
+    <!--15% — 26-->
+    <!--10% — 1A-->
+    <!--5% — 0D-->
+    <!--0% — 00-->
+</resources>

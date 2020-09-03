@@ -34,7 +34,7 @@ import org.xutils.x;
 import java.util.List;
 
 @ContentView(R.layout.activity_login)
-public class LoginActivity extends FragmentActivity {
+public class LoginActivity extends BaseActivity {
 
     @ViewInject(R.id.edit_phone)
     private EditText edit_phone;

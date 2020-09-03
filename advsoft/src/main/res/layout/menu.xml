@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginLeft="@dimen/w_400"
+    android:layout_marginRight="@dimen/w_400">
+
+    <LinearLayout
+        android:id="@+id/setting_content_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingLeft="@dimen/w_50"
+        android:paddingTop="@dimen/h_30"
+        android:paddingBottom="@dimen/h_30"
+        android:paddingRight="@dimen/w_50"
+        android:background="@drawable/selector_setting_fillet"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="设置"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h_20"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="模式选择"
+                android:textColor="@color/white_60"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/mode_rg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/w_20"
+                android:orientation="horizontal"
+                >
+
+                <RadioButton
+                    android:id="@+id/images_btn"
+                    style="@style/package_radio_style"
+                    android:background="@drawable/radiobutton_selector"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:text="图片"
+                    android:textColor="@drawable/radiobutton_text_color"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/videos_btn"
+                    style="@style/package_radio_style"
+                    android:layout_marginLeft="@dimen/w_20"
+                    android:background="@drawable/radiobutton_selector"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:text="视频"
+                    android:textColor="@drawable/radiobutton_text_color"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/up_down_btn"
+                    style="@style/package_radio_style"
+                    android:background="@drawable/radiobutton_selector"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/w_20"
+                    android:button="@null"
+                    android:text="视频图片"
+                    android:textColor="@drawable/radiobutton_text_color"
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h_30"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="其他设置"
+                android:textColor="@color/white_60"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/video_setting_btn"
+                android:layout_width="@dimen/w_180"
+                android:layout_height="@dimen/h_60"
+                android:layout_marginLeft="@dimen/w_20"
+                android:padding="0dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/radiobutton_selector"
+                android:text="视频位置"
+                android:textColor="@drawable/radiobutton_text_color"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/image_setting_btn"
+                android:layout_width="@dimen/w_180"
+                android:layout_height="@dimen/h_60"
+                android:layout_marginLeft="@dimen/w_20"
+                android:padding="0dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/radiobutton_selector"
+                android:text="图片动画"
+                android:textColor="@drawable/radiobutton_text_color"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h_30"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="U盘复制"
+                android:textColor="@color/white_60"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/copy_btn"
+                android:layout_width="@dimen/w_180"
+                android:layout_height="@dimen/h_60"
+                android:layout_marginLeft="@dimen/w_20"
+                android:padding="0dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/radiobutton_selector"
+                android:text="复制到本机"
+                android:textColor="@drawable/radiobutton_text_color"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/h_30"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="注：在U盘根目录建一个yunben文件夹，在yunben文件夹里面建一个images目录放图片和一个videos目录放视频（注：如果是图片视频同步播放需要把图片文件名跟视频文件名一样）"
+                android:textColor="@color/white_60"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

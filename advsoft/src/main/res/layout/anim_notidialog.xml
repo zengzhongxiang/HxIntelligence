@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/w_400"
+    android:layout_marginRight="@dimen/w_400"
+    android:layout_marginTop="@dimen/h_100"
+    android:layout_marginBottom="@dimen/h_100"
+    android:background="@color/white"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/setting_content_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+        <com.adv.hxsoft.widget.FlowRadioGroup
+            android:id="@+id/anim_group"
+            android:layout_width="@dimen/w_650"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/sj_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="随机效果" />
+
+            <RadioButton
+                android:id="@+id/byc_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="百叶窗" />
+
+            <RadioButton
+                android:id="@+id/ccxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="檫除效果" />
+
+            <RadioButton
+                android:id="@+id/hzxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="盒装效果" />
+            <RadioButton
+                android:id="@+id/jtxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="阶梯效果" />
+            <RadioButton
+                android:id="@+id/lzxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="轮子效果" />
+            <RadioButton
+                android:id="@+id/plxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="劈裂效果" />
+            <RadioButton
+                android:id="@+id/qpxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="棋盘效果" />
+            <RadioButton
+                android:id="@+id/qrxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="切入效果" />
+            <RadioButton
+                android:id="@+id/sxzkxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="扇形展开效果" />
+            <RadioButton
+                android:id="@+id/szkzxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="十字扩展效果" />
+            <RadioButton
+                android:id="@+id/sjxtxg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="随机线条效果" />
+            <RadioButton
+                android:id="@+id/xnrjxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="向内溶解效果" />
+            <RadioButton
+                android:id="@+id/yxkzxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="圆形扩展效果" />
+            <RadioButton
+                android:id="@+id/lxxg_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="菱形效果" />
+            <RadioButton
+                android:id="@+id/wu_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18"
+                android:text="无效果" />
+
+        </com.adv.hxsoft.widget.FlowRadioGroup>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/anim_group"
+            android:layout_marginTop="@dimen/h_30"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="图片切换时间(秒)："
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18" />
+            <EditText
+                android:id="@+id/time_editText"
+                android:layout_width="@dimen/w_300"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:gravity="center_vertical"
+                android:focusable="true"
+                android:paddingLeft="@dimen/w_20"
+                android:singleLine="true"
+                android:textSize="@dimen/w_25"
+                android:textColor="@color/black_00" />
+
+            <Button
+                android:id="@+id/but_ok"
+                android:layout_width="@dimen/w_100"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_00"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/w_25"
+                android:text="确定"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

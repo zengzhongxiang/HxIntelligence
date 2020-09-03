@@ -1,1 +1,1 @@
-include ':app', ':hxsoftlaucher', ':androidtvwidget'
+include ':app', ':hxsoftlaucher', ':androidtvwidget', ':advsoft', ':xiaoshuai', ':ijkplayer-java'

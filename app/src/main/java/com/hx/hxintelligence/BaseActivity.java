@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
@@ -23,6 +24,7 @@ public class BaseActivity extends FragmentActivity {
 
     @SuppressLint("RestrictedApi")
     public boolean dispatchKeyEvent(KeyEvent event) {
+        System.out.println ("event.getAction ()==" + event.getAction ());
         if (event.getAction () == 1) {
             System.out.println ("event.getKeyCode ()==" + event.getKeyCode ());
             //这里实现频道切换
@@ -68,7 +70,7 @@ public class BaseActivity extends FragmentActivity {
                 startActivity (i);
                 return true;
             }
-
+             
         }
         return super.dispatchKeyEvent (event);
     }

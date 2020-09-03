@@ -1,0 +1,86 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.adv.hxsoft">
+    <uses-permission android:name="android.permission.GET_TASKS" /> <!--系统运行任务权限-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />  <!--开机启动权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />  <!--SD卡权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!--SD卡权限-->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" tools:ignore="ProtectedPermissions"/> <!--SD卡权限-->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".APP"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:largeHeap="true"
+        android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="true">
+
+        <activity
+            android:name=".activity.WelcomeActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="locale|keyboard|keyboardHidden|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.hisense.action.THIRDSTART" />    <!--海信电视HOME-->
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.ImageActivity" android:clearTaskOnLaunch="true"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+
+        <activity android:name=".activity.VideoActivity" android:clearTaskOnLaunch="true"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true"
+            android:hardwareAccelerated="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+
+        <activity android:name=".activity.ImgVideoActivity" android:clearTaskOnLaunch="true"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true"
+            android:hardwareAccelerated="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+
+        <service android:name=".service.StartActivityService"/>
+
+        <receiver
+            android:name=".receiver.BootCompletedReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.USBReceiver">
+            <intent-filter>
+                <!-- 插入-->
+                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
+                <!--拔出-->
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED"/>
+                <!--完全拔出-->
+                <action android:name="android.intent.action.MEDIA_REMOVED"/>
+                <data android:scheme="file"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
