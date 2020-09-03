@@ -99,7 +99,12 @@ public class ImageActivity extends BaseActivity implements AnimNotiDialog.Dialog
             initData (imageUrl.length);
         }else{
             initData (imageIds.length);
+
+            SpApplyTools.putBoolean (SpApplyTools.ISUSBSDCARD,false);
+            SpApplyTools.putString (SpApplyTools.PATHSTRING,"");
+            SpApplyTools.putString (SpApplyTools.USB_PATH,"");
         }
+
     }
 
 

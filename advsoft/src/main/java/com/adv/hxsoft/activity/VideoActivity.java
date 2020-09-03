@@ -1,18 +1,17 @@
 package com.adv.hxsoft.activity;
 
-import android.net.Uri;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.adv.hxsoft.BaseActivity;
 import com.adv.hxsoft.R;
-import com.adv.hxsoft.player.NVideoView;
 import com.adv.hxsoft.util.Constant;
 import com.adv.hxsoft.util.SdCardUtil;
 import com.adv.hxsoft.util.SpApplyTools;
+import com.adv.hxsoft.widget.FullScreenView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -21,12 +20,10 @@ import org.xutils.x;
 import java.io.File;
 import java.util.List;
 
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-
 @ContentView(value = R.layout.activity_video)
 public class VideoActivity extends BaseActivity {
-    @ViewInject(R.id.film_video)
-    private NVideoView film_video;
+    @ViewInject(R.id.advVideo)
+    private FullScreenView film_video;
 
     private String[] videosUrl;
 
@@ -53,6 +50,10 @@ public class VideoActivity extends BaseActivity {
                 System.out.println ("videosUrl=" + list.get (i));
             }
             brcastVideo();
+        }else{
+            SpApplyTools.putBoolean (SpApplyTools.ISUSBSDCARD,false);
+            SpApplyTools.putString (SpApplyTools.PATHSTRING,"");
+            SpApplyTools.putString (SpApplyTools.USB_PATH,"");
         }
         inintListener();
     }
@@ -60,22 +61,9 @@ public class VideoActivity extends BaseActivity {
     private int i = 0;
     public void inintListener(){
 
-//        film_video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//                i++;
-//                film_video.pause ();;
-//                if (videosUrl !=null && i >= videosUrl.length) {
-//                    i = 0;
-//                    brcastVideo();
-//                } else {
-//                    brcastVideo();
-//                }
-//            }
-//        });
-        film_video.setOnCompletionListener (new IMediaPlayer.OnCompletionListener () {
+        film_video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
-            public void onCompletion(IMediaPlayer mp) {
+            public void onCompletion(MediaPlayer mp) {
                 i++;
                 film_video.pause ();;
                 if (videosUrl !=null && i >= videosUrl.length) {
@@ -86,6 +74,19 @@ public class VideoActivity extends BaseActivity {
                 }
             }
         });
+//        film_video.setOnCompletionListener (new IMediaPlayer.OnCompletionListener () {
+//            @Override
+//            public void onCompletion(IMediaPlayer mp) {
+//                i++;
+//                film_video.pause ();;
+//                if (videosUrl !=null && i >= videosUrl.length) {
+//                    i = 0;
+//                    brcastVideo();
+//                } else {
+//                    brcastVideo();
+//                }
+//            }
+//        });
 
     }
 
@@ -96,22 +97,25 @@ public class VideoActivity extends BaseActivity {
             File file = new File ((path));
             if (file.exists ()) {
                 if(film_video.isPlaying()){
-                    film_video.pause ();
+//                    film_video.pause ();
+                    film_video.stopPlayback ();
                 }
-                film_video.initVideoView(NVideoView.PV_PLAYER__YoukuPlayer);
-                film_video.setDataSource (path);
-//                film_video.start();
-            }
-            System.out.println ("film_video=="+film_video);
-            film_video.setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
+//                film_video.initVideoView(NVideoView.PV_PLAYER__YoukuPlayer);
+//                film_video.setDataSource (path);
 
-                @Override
-                public void onPrepared(IMediaPlayer arg0) {
-                    System.out.println ("path=="+film_video.getDuration()+"");
-                    film_video.seekTo(1);
-                    film_video.start();
-                }
-            });
+                film_video.setVideoPath(path);
+                film_video.start();
+            }
+//            System.out.println ("film_video=="+film_video);
+//            film_video.setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
+//
+//                @Override
+//                public void onPrepared(IMediaPlayer arg0) {
+//                    System.out.println ("path=="+film_video.getDuration()+"");
+//                    film_video.seekTo(1);
+//                    film_video.start();
+//                }
+//            });
         }
     }
 
@@ -122,36 +126,36 @@ public class VideoActivity extends BaseActivity {
     }
 
     private void closeMedia() {
-//        try {
-//            if (mVideoView != null) {
-//                if (mVideoView.isPlaying ()) {
-//                    mVideoView.stopPlayback ();
-//                    mVideoView.suspend();
-//                    mVideoView.setOnCompletionListener(null);
-//                    mVideoView.setOnPreparedListener(null);
-//                    mVideoView = null;
-//
-//                }
-//            }
-//        }catch (Exception e){
-//
-//        }
         try {
-            if (null != film_video) {
-                // 提前标志为false,防止在视频停止时，线程仍在运行。
-                // 如果正在播放，则停止。
+            if (film_video != null) {
                 if (film_video.isPlaying ()) {
-                    // videoView.stop();
-                    film_video.pause ();
+                    film_video.stopPlayback ();
+                    film_video.suspend();
+                    film_video.setOnCompletionListener(null);
+                    film_video.setOnPreparedListener(null);
+                    film_video = null;
+
                 }
-                // 释放mediaPlayer
-                System.out.println ("我销毁了");
-                film_video.release ();
-                film_video = null;
             }
-        } catch (Exception e) {
-            System.out.println ("我异常销毁了");
-            e.printStackTrace ();
+        }catch (Exception e){
+
         }
+//        try {
+//            if (null != film_video) {
+//                // 提前标志为false,防止在视频停止时，线程仍在运行。
+//                // 如果正在播放，则停止。
+//                if (film_video.isPlaying ()) {
+//                    // videoView.stop();
+//                    film_video.pause ();
+//                }
+//                // 释放mediaPlayer
+//                System.out.println ("我销毁了");
+//                film_video.release ();
+//                film_video = null;
+//            }
+//        } catch (Exception e) {
+//            System.out.println ("我异常销毁了");
+//            e.printStackTrace ();
+//        }
     }
 }

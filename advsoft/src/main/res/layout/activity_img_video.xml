@@ -9,17 +9,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"/>
-    <!--<com.adv.hxsoft.widget.FullScreenView-->
-        <!--android:id="@+id/advVideo"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--/>-->
+    <com.adv.hxsoft.widget.FullScreenView
+        android:id="@+id/advVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
-    <com.adv.hxsoft.player.NVideoView
-        android:id="@+id/film_video"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:focusable="true"
-        android:layout_centerInParent="true"/>
+    <!--<com.adv.hxsoft.player.NVideoView-->
+        <!--android:id="@+id/film_video"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:focusable="true"-->
+        <!--android:layout_centerInParent="true"/>-->
 
 </RelativeLayout>

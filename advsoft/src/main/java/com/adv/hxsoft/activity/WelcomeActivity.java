@@ -41,6 +41,6 @@ public class WelcomeActivity extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
-        h.sendEmptyMessageDelayed(200,1000);
+        h.sendEmptyMessageDelayed(200,10000);
     }
 }
