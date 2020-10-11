@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    >
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="664px"
+        android:layout_height="580px"
+        android:orientation="vertical"
+        android:background="@drawable/bg_gray_rectangle_r"
+        android:layout_centerInParent="true"
+        >
+        <!--account-->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_marginTop="100px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="63px"
+            android:paddingRight="73px"
+            android:paddingTop="5px"
+            android:paddingBottom="5px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="30px"
+                android:layout_alignParentLeft="true"
+                android:text="@string/setting_version"
+                android:textColor="@color/commom_all_white"
+                />
+
+            <TextView
+                android:id="@+id/tv_version"
+                android:layout_width="350px"
+                android:layout_height="50px"
+                android:layout_alignParentRight="true"
+                android:nextFocusDown="@id/tv_macAddress"
+                style="@style/NewTextViewStyle"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_marginTop="55px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="63px"
+            android:paddingRight="73px"
+            android:paddingTop="5px"
+            android:paddingBottom="5px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="30px"
+                android:layout_alignParentLeft="true"
+                android:text="@string/macAddress"
+                android:textColor="@color/commom_all_white"
+                />
+
+            <TextView
+                android:id="@+id/tv_macAddress"
+                android:layout_width="350px"
+                android:layout_height="50px"
+                android:layout_alignParentRight="true"
+                android:nextFocusUp="@id/tv_version"
+                android:nextFocusDown="@id/tv_authorization"
+                style="@style/NewTextViewStyle"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_marginTop="55px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="63px"
+            android:paddingRight="73px"
+            android:paddingTop="5px"
+            android:paddingBottom="5px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="30px"
+                android:layout_alignParentLeft="true"
+                android:text="@string/authorization"
+                android:ellipsize="marquee"
+                android:textColor="@color/commom_all_white"
+                />
+
+            <TextView
+                android:id="@+id/tv_authorization"
+                android:layout_width="350px"
+                android:layout_height="50px"
+                android:layout_alignParentRight="true"
+                android:nextFocusUp="@id/tv_macAddress"
+                android:ellipsize="marquee"
+                android:nextFocusDown="@id/authorization_btn"
+                style="@style/NewTextViewStyle"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <!--查看授权证书-->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60px"
+            android:gravity="center"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <Button
+                android:id="@+id/authorization_btn"
+                style="@style/NewBtnStyle"
+                android:layout_width="300px"
+                android:layout_alignParentLeft="true"
+                android:gravity="center"
+                android:text="@string/sel_authorization" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/rel_authorization"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="100px"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        >
+        <ImageView
+            android:id="@+id/img_authorization"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/authorization"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

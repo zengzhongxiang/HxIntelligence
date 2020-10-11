@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/t9_popup_flyt"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2465463"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/one_btn"
+            android:background="@drawable/key_statue_bg_selector"
+            android:textSize="100px"
+            android:text="7"
+            android:layout_marginTop="5px"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:textColor="@color/whilte"
+            android:nextFocusDown="@id/three_btn"
+            android:nextFocusUp="@id/one_btn"
+            android:nextFocusLeft="@id/one_btn"
+            android:nextFocusRight="@id/one_btn"
+            android:layout_marginBottom="@dimen/popup_key_padding"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/two_btn"
+            android:background="@drawable/key_statue_bg_selector"
+            android:textSize="100px"
+            android:text="P"
+            android:nextFocusRight="@id/three_btn"
+            android:nextFocusLeft="@id/two_btn"
+            android:nextFocusDown="@id/two_btn"
+            android:nextFocusUp="@id/two_btn"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:textColor="@color/whilte"
+            android:layout_marginRight="@dimen/popup_key_padding"
+            android:layout_marginLeft="5px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/three_btn"
+            android:background="@drawable/key_statue_bg_selector"
+            android:textSize="100px"
+            android:text="Q"
+            android:nextFocusRight="@id/four_btn"
+            android:nextFocusLeft="@id/two_btn"
+            android:nextFocusDown="@id/five_btn"
+            android:nextFocusUp="@id/one_btn"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:textColor="@color/whilte"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/four_btn"
+            android:background="@drawable/key_statue_bg_selector"
+            android:layout_marginLeft="@dimen/popup_key_padding"
+            android:layout_marginRight="5px"
+            android:nextFocusLeft="@id/three_btn"
+            android:nextFocusRight="@id/four_btn"
+            android:nextFocusUp="@id/four_btn"
+            android:nextFocusDown="@id/four_btn"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:textSize="100px"
+            android:text="R"
+            android:textColor="@color/whilte"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/five_btn"
+            android:background="@drawable/key_statue_bg_selector"
+            android:layout_marginTop="@dimen/popup_key_padding"
+            android:layout_marginBottom="5px"
+            android:nextFocusUp="@id/three_btn"
+            android:nextFocusDown="@id/five_btn"
+            android:nextFocusLeft="@id/five_btn"
+            android:nextFocusRight="@id/five_btn"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:textSize="100px"
+            android:text="S"
+            android:textColor="@color/whilte"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

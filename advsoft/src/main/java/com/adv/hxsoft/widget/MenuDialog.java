@@ -1,7 +1,9 @@
 package com.adv.hxsoft.widget;
 
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -15,18 +17,17 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.adv.hxsoft.APP;
-import com.adv.hxsoft.BaseActivity;
 import com.adv.hxsoft.R;
 import com.adv.hxsoft.activity.ImageActivity;
 import com.adv.hxsoft.activity.ImgVideoActivity;
+import com.adv.hxsoft.util.ApkUtils;
 import com.adv.hxsoft.util.Display;
 import com.adv.hxsoft.util.SDFileUtil;
 import com.adv.hxsoft.util.SdCardUtil;
 import com.adv.hxsoft.util.SpApplyTools;
+import com.adv.hxsoft.util.SystemUtil;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 
 public class MenuDialog extends Dialog implements MyNotiDialog.DialogDismissBack, AnimNotiDialog.DialogDismissBack {
 	private Display display;
@@ -37,6 +38,7 @@ public class MenuDialog extends Dialog implements MyNotiDialog.DialogDismissBack
 	private RadioButton up_down_btn;  //图片视频
 	private Button video_setting_btn;
 	private Button image_setting_btn;
+	private Button system_setting_btn; //系统设置
 	private Button copy_btn;  //复制到本机
 	private MyNotiDialog myNotiDialog;
 	private AnimNotiDialog animNotiDialog;
@@ -161,6 +163,46 @@ public class MenuDialog extends Dialog implements MyNotiDialog.DialogDismissBack
 			}
 		});
 
+		system_setting_btn = findViewById (R.id.system_setting_btn);
+		system_setting_btn.setOnClickListener (new View.OnClickListener () {
+			@Override
+			public void onClick(View v) {
+				String model = SystemUtil.getSystemModel();
+				System.out.println ("model=="+model);
+				Intent intent;
+				try {
+					if("T50E1".equals (model) || "T50V3".equals (model)){   //易美逊
+						intent = new Intent ("com.tpv.intent.action.SettingService");
+						intent.setPackage ("com.tpv.setting");
+						intent.putExtra ("event_type",1);
+						intent.putExtra ("Home",true);
+						intent.putExtra ("show",true);
+						context.startService (intent);
+					}else if("长虹智能电视".equals (model)) {    //长虹 激光电视
+						ComponentName componetName = new ComponentName("com.changhong.easysetting",  "com.changhong.easysetting.MainService");
+						intent = new Intent ();
+						intent.setComponent(componetName);
+						context.startService(intent);
+
+
+					}else {
+						if(ApkUtils.checkPackage (APP.getApp (), "com.android.settings")){
+//                           System.out.println ("1111111111111111");
+//                           intent = new Intent ("com.android.settings.Settings");
+//                           //intent.setPackage ("com.android.settings");
+//                           mContext.startActivity (intent);
+							ApkUtils.startAppWithPackageName(context, "com.android.settings");
+						}else {
+//                           System.out.println ("22222222222222");
+							context.startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
+						}
+					}
+				}catch (Exception e){
+					Toast.makeText (context, "调用系统设置失败", Toast.LENGTH_LONG).show ();
+				}
+
+			}
+		});
 	}
 
 	@Override

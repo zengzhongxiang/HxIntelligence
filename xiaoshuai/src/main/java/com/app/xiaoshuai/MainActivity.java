@@ -1,12 +1,13 @@
 package com.app.xiaoshuai;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 
 import com.costar.hotellibrary.HotelSettings;
 
@@ -31,6 +32,14 @@ public class MainActivity extends FragmentActivity {
         });
 
 //        System.out.println ("getSystemModel()=="+getSystemModel());
+
+        Button button = findViewById (R.id.myBut);
+        button.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent (MainActivity.this, MainActivity2.class));
+            }
+        });
     }
 
     public static String getSystemModel() {

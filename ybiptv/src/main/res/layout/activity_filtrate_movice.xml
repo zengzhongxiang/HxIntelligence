@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 影视筛选界面 -->
+<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:orientation="vertical"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 搜索工具栏 -->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:paddingLeft="80px"
+            android:layout_height="100px">
+            <Button
+                android:id="@+id/search_btn"
+                android:text="搜索影视"
+                android:background="@drawable/trailer_btn_normal"
+                android:textColor="@color/whilte"
+                android:textSize="30px"
+                android:focusableInTouchMode="false"
+                android:focusable="false"
+                android:gravity="center"
+                android:layout_width="300px"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/newMovice_btn"
+                android:text="最新上线"
+                android:layout_toRightOf="@+id/search_btn"
+                android:background="@drawable/trailer_btn_normal"
+                android:textColor="@color/whilte"
+                android:textSize="30px"
+                android:focusableInTouchMode="false"
+                android:focusable="false"
+                android:gravity="center"
+                android:layout_width="300px"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:layout_width="200px"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="50px"
+                android:layout_gravity="right"
+                android:background="@drawable/bst"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <!-- 影视标题栏 -->
+        <com.open.leanback.widget.HorizontalGridView
+            android:id="@+id/title_hgridview"
+            android:layout_width="match_parent"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:layout_height="@dimen/title_h" />
+
+        <!-- 影视内容 -->
+        <com.app.ybiptv.view.TvViewPager
+            android:id="@+id/page_vp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+</com.zhy.autolayout.AutoFrameLayout>

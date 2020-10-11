@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    >
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="664px"
+        android:layout_height="580px"
+        android:orientation="vertical"
+        android:background="@drawable/bg_gray_rectangle_r"
+        android:layout_centerInParent="true"
+        >
+        <!--account-->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_marginTop="100px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="63px"
+            android:paddingRight="73px"
+            android:paddingTop="5px"
+            android:paddingBottom="5px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="30px"
+                android:layout_alignParentLeft="true"
+                android:text="@string/ip_addr"
+                android:textColor="@color/commom_all_white"
+                />
+
+            <TextView
+                android:id="@+id/tv_netIpAddress"
+                android:layout_width="350px"
+                android:layout_height="50px"
+                android:layout_alignParentRight="true"
+                android:nextFocusDown="@id/tv_subNetMask"
+                style="@style/NewTextViewStyle"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_marginTop="55px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="63px"
+            android:paddingRight="73px"
+            android:paddingTop="5px"
+            android:paddingBottom="5px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="30px"
+                android:layout_alignParentLeft="true"
+                android:text="@string/subNetMask"
+                android:textColor="@color/commom_all_white"
+                />
+
+            <TextView
+                android:id="@+id/tv_subNetMask"
+                android:layout_width="350px"
+                android:layout_height="50px"
+                android:layout_alignParentRight="true"
+                android:nextFocusUp="@id/tv_netIpAddress"
+                android:nextFocusDown="@id/tv_gateway"
+                style="@style/NewTextViewStyle"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_marginTop="55px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="63px"
+            android:paddingRight="73px"
+            android:paddingTop="5px"
+            android:paddingBottom="5px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="30px"
+                android:layout_alignParentLeft="true"
+                android:text="@string/gateway"
+                android:textColor="@color/commom_all_white"
+                />
+
+            <TextView
+                android:id="@+id/tv_gateway"
+                android:layout_width="350px"
+                android:layout_height="50px"
+                android:layout_alignParentRight="true"
+                android:nextFocusUp="@id/tv_subNetMask"
+                android:nextFocusDown="@id/tv_dns"
+                style="@style/NewTextViewStyle"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_marginTop="55px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="63px"
+            android:paddingRight="73px"
+            android:paddingTop="5px"
+            android:paddingBottom="5px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="30px"
+                android:layout_alignParentLeft="true"
+                android:text="@string/dns"
+                android:textColor="@color/commom_all_white"
+                />
+
+            <TextView
+                android:id="@+id/tv_dns"
+                android:layout_width="350px"
+                android:layout_height="50px"
+                android:layout_alignParentRight="true"
+                android:nextFocusUp="@id/tv_gateway"
+                style="@style/NewTextViewStyle"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

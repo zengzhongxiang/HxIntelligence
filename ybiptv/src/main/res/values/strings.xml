@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">云犇IPTV</string>
+    <string name="system_settings">系统设置</string>
+    <string name="wifinet">无线网络</string>
+    <string name="wired_networ">有线网络</string>
+    <string name="service">服务|房间号</string>
+    <string name="about">关于</string>
+
+    <string name="gateway">网关</string>
+    <string name="subNetMask">子网掩码</string>
+    <string name="dns">DNS</string>
+    <string name="ip_addr">IP地址</string>
+    <string name="room_no">房间号</string>
+
+    <string name="setting_version">版本号</string>
+    <string name="macAddress">mac地址</string>
+    <string name="authorization">授权证书</string>
+
+    <string name="empty_ipaddr_tip">ip地址不能为空</string>
+    <string name="empty_roomno_tip">房间号不能为空</string>
+
+    <string name="sel_authorization">查看授权证书</string>
+    <string name="ok">确定</string>
+
+    <!-- 播放器 -->
+    <string name="vdec">vdec</string>
+    <string name="fps">fps</string>
+    <string name="v_cache">v-cache</string>
+    <string name="a_cache">a-cache</string>
+    <string name="load_cost">load-cost</string>
+    <string name="seek_cost">seek_cost</string>
+    <string name="seek_load_cost">seek_load_cost</string>
+    <string name="tcp_speed">tcp_speed</string>
+    <string name="bit_rate">bit_rate</string>
+    <string name="play">播放</string>
+</resources>

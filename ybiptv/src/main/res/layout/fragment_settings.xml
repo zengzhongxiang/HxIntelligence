@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="1200px"
+        android:layout_height="680px"
+        android:background="@drawable/bg_gray_rectangle_r"
+        android:gravity="center">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="360px"
+            android:layout_weight="1"
+            android:focusable="false" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/netsetting"
+            android:layout_width="300px"
+            android:layout_height="360px"
+            android:background="@drawable/setting_item_selector"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:focusedByDefault="true"
+            android:nextFocusRight="@id/servicesetting"
+            android:nextFocusLeft="@id/aboutsetting">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60px"
+                android:background="@drawable/icon_net" />
+
+            <TextView
+                android:id="@+id/net_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="60px"
+                android:background="@drawable/setting_item_selector"
+                android:gravity="center"
+                android:text="@string/wired_networ"
+                android:textColor="@color/commom_all_white"
+                android:textSize="40px" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="360px"
+            android:layout_weight="1"
+            android:focusable="false" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/servicesetting"
+            android:layout_width="300px"
+            android:layout_height="360px"
+            android:background="@drawable/setting_item_selector"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:focusedByDefault="true"
+            android:nextFocusLeft="@id/netsetting"
+            android:nextFocusRight="@id/aboutsetting">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60px"
+                android:background="@drawable/icon_room_nubmer" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="60px"
+                android:background="@drawable/setting_item_selector"
+                android:gravity="center"
+                android:text="@string/service"
+                android:textColor="@color/commom_all_white"
+                android:textSize="40px" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="360px"
+            android:layout_weight="1"
+            android:focusable="false" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/aboutsetting"
+            android:layout_width="300px"
+            android:layout_height="360px"
+            android:background="@drawable/setting_item_selector"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:focusedByDefault="true"
+            android:nextFocusLeft="@id/servicesetting"
+            android:nextFocusRight="@id/netsetting">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60px"
+                android:background="@drawable/icon_about" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="60px"
+                android:background="@drawable/setting_item_selector"
+                android:gravity="center"
+                android:text="@string/about"
+                android:textColor="@color/commom_all_white"
+                android:textSize="40px" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="360px"
+            android:layout_weight="1"
+            android:focusable="false" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

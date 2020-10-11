@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@android:color/transparent</item>
+    </style>
+
+    <style name="NewTheme" parent="android:Theme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowBackground">@drawable/main_bg</item>
+    </style>
+
+    <style name="NewTextViewStyle">
+        <item name="android:layout_width">@dimen/tv_width</item>
+        <item name="android:layout_height">@dimen/tv_height</item>
+        <item name="android:layout_marginLeft">@dimen/tv_left_margin</item>
+        <item name="android:paddingLeft">@dimen/tv_left_padding</item>
+        <item name="android:paddingRight">@dimen/tv_left_padding</item>
+        <item name="android:background">@drawable/btn_bg_seletor_blue_gray</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/whilte</item>
+        <item name="android:textSize">@dimen/tv_text_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- 输入文本 -->
+    <style name="NewEditTextStyle">
+        <item name="android:layout_width">@dimen/et_width</item>
+        <item name="android:layout_height">@dimen/et_height</item>
+        <item name="android:layout_marginLeft">@dimen/et_left_margin</item>
+        <item name="android:paddingLeft">@dimen/et_left_padding</item>
+        <item name="android:paddingRight">@dimen/et_left_padding</item>
+        <item name="android:background">@drawable/btn_bg_seletor_blue_gray</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/whilte</item>
+        <item name="android:textSize">@dimen/et_text_size</item>
+    </style>
+
+    <!-- 按钮 -->
+    <style name="NewBtnStyle">
+        <item name="android:layout_width">@dimen/btn_width</item>
+        <item name="android:layout_height">@dimen/btn_height</item>
+        <item name="android:background">@drawable/btn_bg_seletor_blue_gray</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:textColor">@color/commom_all_white</item>
+        <item name="android:textSize">@dimen/btn_text_size</item>
+    </style>
+</resources>

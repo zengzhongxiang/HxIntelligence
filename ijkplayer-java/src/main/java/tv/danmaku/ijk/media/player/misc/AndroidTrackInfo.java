@@ -26,10 +26,10 @@ public class AndroidTrackInfo implements ITrackInfo {
     private final MediaPlayer.TrackInfo mTrackInfo;
 
     public static AndroidTrackInfo[] fromMediaPlayer(MediaPlayer mp) {
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             return fromTrackInfo(mp.getTrackInfo());
 
-     //   return null;
+        return null;
     }
 
     private static AndroidTrackInfo[] fromTrackInfo(MediaPlayer.TrackInfo[] trackInfos) {

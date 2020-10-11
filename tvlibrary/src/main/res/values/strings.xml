@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TVLibrary</string>
+    <string name="info_times_hour">H</string>
+    <string name="info_times_minute">m</string>
+</resources>

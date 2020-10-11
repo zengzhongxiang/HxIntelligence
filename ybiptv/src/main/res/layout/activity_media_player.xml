@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF000000"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <com.app.ybiptv.player.UpVideoView
+        android:id="@+id/upVideoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        android:background="@drawable/bst"
+        />
+
+    <TableLayout
+        android:id="@+id/hud_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:background="#77000000"
+        android:padding="8dp" />
+
+    <!--<com.open.leanback.widget.PageRecyclerView-->
+    <!--android:id="@+id/h_gridview"-->
+    <!--android:layout_width="1000px"-->
+    <!--android:layout_height="550px"-->
+    <!--android:layout_gravity="bottom|center_horizontal"-->
+    <!--android:focusable="true"-->
+    <!--android:focusableInTouchMode="true" />-->
+
+    <ProgressBar
+        android:id="@+id/loading"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="#99000000"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <!-- 进度条，时间-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- 播放/暂停 状态 -->
+            <ImageView
+                android:id="@+id/play_state_iv"
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:layout_marginLeft="40px"
+                android:src="@drawable/video_player_start" />
+
+            <TextView
+                android:id="@+id/current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:text="00:00"
+                android:textColor="#ffffff"
+                android:textSize="25px" />
+
+            <SeekBar
+                android:id="@+id/progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1.0"
+                android:background="@null"
+                android:max="100"
+                android:maxHeight="8px"
+                android:minHeight="8px"
+                android:progressDrawable="@drawable/video_seek_progress"
+                android:thumb="@null" />
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40px"
+                android:text="00:00"
+                android:textColor="#ffffff"
+                android:textSize="25px" />
+
+
+        </LinearLayout>
+
+        <include layout="@layout/include_tv_info_layout" />
+    </LinearLayout>
+
+    <!-- 电视剧选集 -->
+    <com.open.leanback.widget.HorizontalGridView
+        android:id="@+id/h_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="80px"
+        android:layout_marginLeft="200px"
+        android:layout_marginRight="200px" />
+
+    <!-- 直播菜单选择 -->
+    <include layout="@layout/include_live_menu_view" />
+
+</com.zhy.autolayout.AutoFrameLayout>

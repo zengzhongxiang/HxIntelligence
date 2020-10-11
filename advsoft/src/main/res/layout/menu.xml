@@ -94,6 +94,19 @@
                 android:text="其他设置"
                 android:textColor="@color/white_60"
                 android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/system_setting_btn"
+                android:layout_width="@dimen/w_180"
+                android:layout_height="@dimen/h_60"
+                android:layout_marginLeft="@dimen/w_20"
+                android:padding="0dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/radiobutton_selector"
+                android:text="系统设置"
+                android:textColor="@drawable/radiobutton_text_color"
+                android:textSize="14sp" />
+
             <Button
                 android:id="@+id/video_setting_btn"
                 android:layout_width="@dimen/w_180"
@@ -129,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="U盘复制"
+                android:text="U盘复制 "
                 android:textColor="@color/white_60"
                 android:textSize="20sp" />
             <Button

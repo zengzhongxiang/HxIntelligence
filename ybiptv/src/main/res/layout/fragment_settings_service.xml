@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:background="@android:color/transparent">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="664px"
+        android:layout_height="580px"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_gray_rectangle_r"
+        android:orientation="vertical">
+        <!--account-->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100px"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingBottom="5px"
+            android:paddingLeft="63px"
+            android:paddingRight="73px"
+            android:paddingTop="5px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:nextFocusDown="@id/save_btn"
+                android:text="@string/ip_addr"
+                android:textColor="@color/commom_all_white"
+                android:textSize="30px" />
+
+            <!--android:digits="0123456789."-->
+            <EditText
+                android:id="@+id/et_ipaddr"
+                style="@style/NewEditTextStyle"
+                android:digits="0123456789.:"
+                android:maxLength="25"
+                android:layout_width="350px"
+                android:layout_height="50px"
+                android:layout_alignParentRight="true"
+
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55px"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingBottom="5px"
+            android:paddingLeft="63px"
+            android:paddingRight="73px"
+            android:paddingTop="5px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:text="@string/room_no"
+                android:textColor="@color/commom_all_white"
+                android:textSize="30px" />
+
+            <EditText
+                android:id="@+id/et_room_no"
+                style="@style/NewEditTextStyle"
+                android:maxLength="18"
+                android:layout_width="350px"
+                android:layout_height="50px"
+                android:layout_alignParentRight="true"/>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <!--确认，取消按钮-->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60px"
+            android:gravity="center"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <!-- 确定 -->
+            <Button
+                android:id="@+id/save_btn"
+                style="@style/NewBtnStyle"
+                android:layout_alignParentLeft="true"
+                android:gravity="center"
+                android:text="@string/ok" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

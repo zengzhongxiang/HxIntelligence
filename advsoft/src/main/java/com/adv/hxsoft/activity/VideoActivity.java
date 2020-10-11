@@ -2,9 +2,8 @@ package com.adv.hxsoft.activity;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-
-import androidx.annotation.Nullable;
 
 import com.adv.hxsoft.BaseActivity;
 import com.adv.hxsoft.R;

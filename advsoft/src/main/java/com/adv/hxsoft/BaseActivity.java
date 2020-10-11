@@ -6,6 +6,8 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -13,8 +15,6 @@ import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.RadioGroup;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 
 import com.adv.hxsoft.util.Display;
 import com.adv.hxsoft.util.SystemInfo;

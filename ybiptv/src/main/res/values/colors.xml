@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="color_btn_blue_bg">#C83053BE</color>
+    <color name="color_btn_gray_bg">#B2121111</color>
+
+    <color name="commom_all_white">#FFFFFF</color>
+    <color name="commom_all_white_fifhty">#7FFFFFFF</color>
+    <color name="commom_all_white_niety">#E6FFFFFF</color>
+
+    <color name="common_gray_bg">#4C000000</color>
+
+    <color name="whilte">#FFFFFF</color>
+    <color name="clear_color">#00000000</color>
+    <color name="text_white_in_details_page">#FFFCFC</color>
+
+    <color name="style_color">#005fff</color><!--主题色-->
+
+    <!-- 影视筛选界面 -->
+    <color name="title_select_color">#FFE55D30</color>
+    <color name="title_none_color">#FF858484</color>
+
+    <!-- 键盘界面 -->
+    <color name="key_none_color">#FF212426</color>
+
+    <!-- 直播界面 频道名称: FF1376FE 频道信息:FF0E478D -->
+    <color name="channel_name_color">#FF028AFD</color>
+    <color name="channel_info_color">#FF0E478D</color>
+    <color name="channel_2_color">#FF717171</color>
+
+    <!-- 点播详情界面 -->
+    <color name="detail_none_color">#1AFFFFFF</color>
+
+    <color name="detail_background">#0096a6</color>
+    <color name="default_background">#3d3d3d</color>
+</resources>
+
+    <!--百分比-开头字母-->
+    <!--100% —FF-->
+    <!--95% — F2-->
+    <!--90% — E6-->
+    <!--85% — D9-->
+    <!--80% — CC-->
+    <!--75% — BF-->
+    <!--70% — B3-->
+    <!--65% — A6-->
+    <!--60% — 99-->
+    <!--55% — 8C-->
+    <!--50% — 80-->
+    <!--45% — 73-->
+    <!--40% — 66-->
+    <!--35% — 59-->
+    <!--30% — 4D-->
+    <!--25% — 40-->
+    <!--20% — 33-->
+    <!--15% — 26-->
+    <!--10% — 1A-->
+    <!--5% — 0D-->
+    <!--0% — 00-->

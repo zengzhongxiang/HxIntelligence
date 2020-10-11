@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 系统设置 主界面 -->
+<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    tools:context=".activity.SettingActivity">
+
+    <com.zhy.autolayout.AutoFrameLayout
+        android:id="@+id/contentlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.zhy.autolayout.AutoFrameLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/system_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="66px"
+        android:layout_marginTop="66px"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="64px"
+            android:layout_height="64px"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/setting_t" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20px"
+            android:gravity="center"
+            android:text="@string/system_settings"
+            android:textColor="@color/commom_all_white"
+            android:textSize="36px" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoFrameLayout>

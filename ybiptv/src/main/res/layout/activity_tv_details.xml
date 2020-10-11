@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:background="@drawable/main_bg">
+
+    <com.zhy.autolayout.AutoFrameLayout
+        android:id="@+id/lay_play_content"
+        android:layout_width="800px"
+        android:layout_height="600px"
+        android:layout_marginLeft="80px"
+        android:layout_marginTop="77px"
+        android:background="#FF000000"
+        android:clickable="true">
+        <!-- 播放器 -->
+        <com.app.ybiptv.player.UpVideoView
+            android:id="@+id/play_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <View
+            android:id="@+id/player_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/movice_board_bg"
+            android:clickable="true" />
+    </com.zhy.autolayout.AutoFrameLayout>
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/lay_mv"
+        android:layout_width="892px"
+        android:layout_height="485px"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="74px"
+        android:layout_marginTop="77px">
+
+        <TextView
+            android:id="@+id/mv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="致我们单纯的小美好"
+            android:textColor="@color/text_white_in_details_page"
+            android:textSize="50px"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/mv_status_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mv_title"
+            android:layout_marginTop="40px"
+            android:gravity="center_vertical"
+            android:text="已完结共23集"
+            android:textColor="@color/text_white_in_details_page"
+            android:textSize="30px"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mv_maked_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mv_status_info"
+            android:layout_marginTop="40px"
+            android:gravity="center_vertical"
+            android:text="内地|国语"
+            android:textColor="@color/text_white_in_details_page"
+            android:textSize="30px" />
+
+        <TextView
+            android:id="@+id/mv_main_director"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mv_maked_language"
+            android:layout_marginTop="10px"
+            android:gravity="center_vertical"
+            android:text="导演:"
+            android:textColor="@color/text_white_in_details_page"
+            android:textSize="30px" />
+
+        <TextView
+            android:id="@+id/mv_main_actor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mv_main_director"
+            android:layout_marginTop="10px"
+            android:gravity="center_vertical"
+            android:text="主演:"
+            android:textColor="@color/text_white_in_details_page"
+            android:textSize="30px" />
+
+        <TextView
+            android:id="@+id/mv_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mv_main_actor"
+            android:gravity="center_vertical"
+            android:text="类型:"
+            android:textColor="@color/text_white_in_details_page"
+            android:textSize="30px"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mv_synopsis"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/mv_type"
+            android:layout_marginTop="40px"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:text="简介：金融危机爆发以来，全球经济面临1929年经济大萧条以来最困难的局面。很多国家为了自保，挥舞起了贸易保护主义大棒。
+            当前这种贸易保护的趋势，它是糖水还是毒药？它能帮助经济走出困境，还是会使危机更加恶化，这成为2009年初达沃斯世界经济论坛上各位商界
+            领袖最热衷于讨论的焦点问题。随着时间推移，危机进一步蔓延，贸易保护是否会进一步演化成为贸易战争、军事战争？这影响着全球的经济走势
+            ，也将决定你我未来的生活。"
+            android:textColor="@color/text_white_in_details_page"
+            android:textSize="30px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="81px"
+        android:layout_below="@+id/lay_mv"
+        android:layout_marginLeft="954px"
+        android:layout_marginTop="30px"
+        android:clickable="false"
+        android:clipToPadding="false"
+        android:gravity="center_vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/lay_play_fn"
+            android:layout_width="226px"
+            android:layout_height="81px"
+            android:background="@drawable/detail_bg_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:focusedByDefault="true"
+            android:nextFocusRight="@+id/lay_money">
+
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="37px"
+                android:src="@drawable/icon_play_details_page" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30px"
+                android:gravity="center"
+                android:text="@string/play"
+                android:textColor="@color/text_white_in_details_page"
+                android:textSize="37px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/lay_money"
+            android:layout_width="226px"
+            android:layout_height="81px"
+            android:layout_marginLeft="100px"
+            android:layout_toRightOf="@id/lay_play_fn"
+            android:background="@drawable/bg_selector_details_page_orange_gray"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusLeft="@id/lay_play_fn"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30px"
+                android:src="@drawable/icon_money_details_page" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30px"
+                android:gravity="center"
+                android:text="付费"
+                android:textColor="@color/text_white_in_details_page"
+                android:textSize="37px"
+                android:visibility="gone" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <!--相关推荐-->
+
+    <LinearLayout
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lay_play_content"
+        android:layout_marginLeft="80px"
+        android:layout_marginRight="80px"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相关推荐"
+            android:textColor="@color/commom_all_white_fifhty" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/commom_all_white_fifhty" />
+
+    </LinearLayout>
+
+    <com.open.leanback.widget.HorizontalGridView
+        android:id="@+id/recommend_hgridview"
+        android:layout_below="@+id/text"
+        android:layout_marginLeft="80px"
+        android:layout_marginRight="80px"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.open.leanback.widget.HorizontalGridView>
+
+    <!-- 电视剧分集 -->
+
+    <TextView
+        android:id="@+id/mv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80px"
+        android:layout_marginTop="710px"
+        android:layout_toRightOf="@+id/lay_play_content"
+        android:text="剧集列表"
+        android:textColor="@color/text_white_in_details_page"
+        android:textSize="40px"
+        android:visibility="gone" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/lay_mv_count_details"
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:layout_below="@id/mv_count"
+        android:layout_marginLeft="80px"
+        android:layout_marginRight="80px"
+        android:layout_marginTop="50px"
+        android:layout_toRightOf="@+id/lay_play_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/left_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/left_arrow" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mv_count_vpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/right_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/right_arrow" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <!-- 分集 -->
+    <!--<com.open.leanback.widget.HorizontalGridView-->
+        <!--android:id="@+id/mv_counts_part"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="90px"-->
+        <!--android:layout_below="@id/lay_mv_count_details"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_marginLeft="80px"-->
+        <!--android:layout_marginRight="120px"-->
+        <!--android:layout_marginTop="20px"-->
+        <!--android:layout_toRightOf="@+id/lay_play_content"-->
+        <!--android:visibility="gone" />-->
+
+</com.zhy.autolayout.AutoRelativeLayout>

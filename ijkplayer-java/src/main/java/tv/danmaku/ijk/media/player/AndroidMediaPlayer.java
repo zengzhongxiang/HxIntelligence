@@ -41,7 +41,7 @@ import tv.danmaku.ijk.media.player.misc.ITrackInfo;
 import tv.danmaku.ijk.media.player.pragma.DebugLog;
 
 public class AndroidMediaPlayer extends AbstractMediaPlayer {
-    public final MediaPlayer mInternalMediaPlayer;
+    private final MediaPlayer mInternalMediaPlayer;
     private final AndroidMediaPlayerListenerHolder mInternalListenerAdapter;
     private String mDataSource;
     private MediaDataSource mMediaDataSource;
@@ -54,19 +54,6 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
     public AndroidMediaPlayer() {
         synchronized (mInitLock) {
             mInternalMediaPlayer = new MediaPlayer();
-        }
-        mInternalMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        mInternalListenerAdapter = new AndroidMediaPlayerListenerHolder(this);
-        attachInternalListeners();
-    }
-
-    public AndroidMediaPlayer(Context context,int raw) {
-        synchronized (mInitLock) {
-            if (context!=null)
-                mInternalMediaPlayer = new MediaPlayer();
-            else
-                mInternalMediaPlayer = new MediaPlayer();
-
         }
         mInternalMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mInternalListenerAdapter = new AndroidMediaPlayerListenerHolder(this);

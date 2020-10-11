@@ -1,6 +1,7 @@
 package com.adv.hxsoft.activity;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,6 @@ import android.widget.AdapterViewFlipper;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
-
-import androidx.annotation.Nullable;
 
 import com.adv.hxsoft.BaseActivity;
 import com.adv.hxsoft.R;

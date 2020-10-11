@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contentlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.zhy.autolayout.AutoFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        android:background="#FF293139">
+        <com.open.leanback.widget.VerticalGridView
+            android:id="@+id/new_vgridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FF293139"
+            android:clipChildren="false"
+            android:clipToPadding="false" />
+        <TextView
+            android:id="@+id/tip_tv"
+            android:text="没有任何数据"
+            android:textSize="25px"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_no_date_tip"
+            android:textColor="@color/whilte"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!-- 进度条 -->
+        <ProgressBar
+            android:id="@+id/loading"
+            style="?android:attr/progressBarStyleLarge"
+            android:visibility="gone"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_gravity="center" />
+    </com.zhy.autolayout.AutoFrameLayout>
+
+</com.zhy.autolayout.AutoFrameLayout>

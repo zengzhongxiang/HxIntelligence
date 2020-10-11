@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/live_menu_flyt"
+    android:visibility="gone"
+    android:background="@drawable/dialog_bg"
+    android:layout_margin="50px"
+    android:layout_width="1000px"
+    android:layout_height="match_parent">
+
+    <!-- 菜单选择 -->
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="1000px"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- 频道选择 -->
+        <com.open.leanback.widget.VerticalGridView
+            android:id="@+id/one_vgridview"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="20px"
+            android:layout_width="500px"
+            android:layout_height="match_parent" />
+        <View
+            android:background="@drawable/bg_program_date"
+            android:layout_width="1px"
+            android:layout_height="match_parent"/>
+        <!-- 预约 -->
+        <com.zhy.autolayout.AutoFrameLayout
+            android:layout_width="500px"
+            android:layout_height="match_parent">
+
+            <com.open.leanback.widget.VerticalGridView
+                android:id="@+id/two_vgridview"
+                android:layout_width="500px"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/channel_tip_tv"
+                android:text="暂无节目信息"
+                android:textSize="25px"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/ic_no_date_tip"
+                android:textColor="@color/whilte"
+                android:visibility="visible"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.zhy.autolayout.AutoFrameLayout>
+
+        <!---->
+       <!-- <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />-->
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.open.leanback.widget.VerticalGridView
+        android:id="@+id/time_vgridview"
+        android:layout_gravity="center_vertical"
+        android:layout_width="100px"
+        android:layout_marginLeft="450px"
+        android:layout_height="380px"/>
+
+</com.zhy.autolayout.AutoFrameLayout>

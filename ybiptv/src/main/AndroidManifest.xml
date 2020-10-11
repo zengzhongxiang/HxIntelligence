@@ -1,0 +1,140 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.app.ybiptv">
+
+    <!-- X5 权限开始 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--X5 权限结束 -->
+
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+
+    <!-- 显示顶层浮窗 TYPE_APPLICATION_OVERLAY -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!--<application-->
+        <!--android:allowBackup="true"-->
+        <!--android:icon="@mipmap/ic_launcher"-->
+        <!--android:label="@string/app_name"-->
+        <!--android:supportsRtl="true"-->
+        <!--android:theme="@style/AppTheme">-->
+    <application
+        android:name=".activity.IptvApplication"
+        android:allowBackup="true"
+        android:configChanges="keyboard|mcc|mnc|locale|touchscreen|keyboardHidden|navigation|orientation|screenSize|screenLayout|layoutDirection|uiMode|smallestScreenSize|fontScale"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:persistent="true"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/NewTheme">
+
+
+        <!-- Launcher主界面 -->
+        <activity
+            android:name=".activity.WelcomeActivity"
+            android:clearTaskOnLaunch="true"
+            android:hardwareAccelerated="false"
+            android:launchMode="singleTask"
+            android:resumeWhilePausing="true"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true"
+            android:taskAffinity=""
+            android:networkSecurityConfig="@xml/network_security_config"
+            android:usesCleartextTraffic="true"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".activity.FiltrateMoviceActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+        <!-- 电影 电视剧详情 -->
+        <activity
+            android:name=".activity.TvDetailsActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+        <!-- 点播播放界面 -->
+        <activity
+            android:name=".activity.MediaPlayActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+        <!-- 影视搜索界面 -->
+        <activity
+            android:name=".activity.SearchMoviceActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+        <!-- 最新上线电影 -->
+        <activity
+            android:name=".activity.NewMoviceActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+        <!-- 主题电影 -->
+        <activity
+            android:name=".activity.ThemeMoviceActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+        <!-- 设置 -->
+        <activity
+            android:name=".activity.SettingActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+        <!-- websocket 后台服务 -->
+        <service android:name=".service.WebSocketService" android:exported="true">
+            <intent-filter>
+                <action android:name="com.open.launcher.iptvservice"/>
+            </intent-filter>
+        </service>
+
+        <!-- AutoLayout 基准分辨率初始化 -->
+        <meta-data
+            android:name="design_width"
+            android:value="1920"/>
+        <meta-data
+            android:name="design_height"
+            android:value="1080"/>
+
+        <meta-data
+            android:name="com.app.ybiptv.utils.GlideModelConfig"
+            android:value="GlideModule" />
+
+    </application>
+
+</manifest>
