@@ -6,7 +6,7 @@ package com.app.ybiptv.bean;
 
 public class ResultBean<T> {
     int code;
-    String message;
+    String msg;
     T data;
 
     public int getCode() {
@@ -17,12 +17,12 @@ public class ResultBean<T> {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public T getData() {
@@ -37,7 +37,7 @@ public class ResultBean<T> {
     public String toString() {
         return "ResultBean{" +
                 "code=" + code +
-                ", message='" + message + '\'' +
+                ", msg='" + msg + '\'' +
                 ", data=" + data +
                 '}';
     }

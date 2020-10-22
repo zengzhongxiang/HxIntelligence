@@ -6,10 +6,9 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewBridge extends EffectNoDrawBridge {
 	

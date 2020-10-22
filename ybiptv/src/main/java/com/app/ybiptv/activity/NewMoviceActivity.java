@@ -135,7 +135,7 @@ public class NewMoviceActivity extends BaseActivity {
             if (null != mMoviceList) {
                 final MoviceMode moviceMode = mMoviceList.get (position);
                 Glide.with (NewMoviceActivity.this)
-                        .load (Consts.ROOT_ADDR + moviceMode.getPath ()).into (((ImageView) holder.bgIv));
+                        .load (Consts.ROOT_ADDR + moviceMode.getPlay_url ()).into (((ImageView) holder.bgIv));
                 ((TextView) holder.nameTv).setText (mMoviceList.get (position).getProgram_name ());
                 holder.itemView.setOnFocusChangeListener (new View.OnFocusChangeListener () {
                     @Override

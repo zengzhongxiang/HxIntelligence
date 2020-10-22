@@ -22,8 +22,8 @@
     <dimen name="common_radius_of_shape">12px</dimen>
 
     <!-- 影视筛选 -->
-    <dimen name="title_h">80px</dimen>
-    <dimen name="title_w">180px</dimen>
+    <dimen name="title_h">105px</dimen>
+    <dimen name="title_w">210px</dimen>
     <dimen name="title_line_w">40px</dimen>
     <dimen name="title_line_h">4px</dimen>
 

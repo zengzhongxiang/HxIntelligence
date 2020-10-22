@@ -1,8 +1,7 @@
 package com.open.androidtvwidget.cache;
 
 import android.graphics.Bitmap;
-
-import androidx.collection.LruCache;
+import android.support.v4.util.LruCache;
 
 /**
  * Bitmap缓存，简单缓存.

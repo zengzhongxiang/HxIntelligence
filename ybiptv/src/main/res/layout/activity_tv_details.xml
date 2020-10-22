@@ -170,8 +170,7 @@
             android:background="@drawable/bg_selector_details_page_orange_gray"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:nextFocusLeft="@id/lay_play_fn"
-            android:visibility="gone">
+            android:nextFocusLeft="@id/lay_play_fn">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -188,8 +187,7 @@
                 android:gravity="center"
                 android:text="付费"
                 android:textColor="@color/text_white_in_details_page"
-                android:textSize="37px"
-                android:visibility="gone" />
+                android:textSize="37px"/>
         </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoRelativeLayout>
 

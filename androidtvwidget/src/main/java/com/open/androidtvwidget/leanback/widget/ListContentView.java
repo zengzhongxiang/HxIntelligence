@@ -1,12 +1,11 @@
 package com.open.androidtvwidget.leanback.widget;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.open.androidtvwidget.R;
 import com.open.androidtvwidget.leanback.recycle.RecyclerViewTV;

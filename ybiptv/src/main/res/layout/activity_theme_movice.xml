@@ -2,51 +2,7 @@
 <com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/contentlay"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.4"
-        android:background="#FF293139">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/theme_bg"
-            />
-
-        <com.open.leanback.widget.HorizontalGridView
-            android:id="@+id/theme_vgridview"
-            android:layout_width="match_parent"
-            android:layout_height="451px"
-            android:layout_gravity="bottom"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="150px"
-            android:clipChildren="false"
-            android:clipToPadding="false" />
-
-
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_below="@id/theme_vgridview"
-            >
-
-            <ImageView
-                android:layout_width="300px"
-                android:layout_height="300px"
-                android:background="@mipmap/ic_launcher"/>
-        </com.zhy.autolayout.AutoRelativeLayout>
-
-        <!-- 进度条 -->
-        <ProgressBar
-            android:id="@+id/loading"
-            style="?android:attr/progressBarStyleLarge"
-            android:visibility="gone"
-            android:layout_width="100px"
-            android:layout_height="100px"
-            android:layout_gravity="center" />
-    </com.zhy.autolayout.AutoRelativeLayout>
+    android:layout_height="match_parent"
+    android:focusable="false">
 
 </com.zhy.autolayout.AutoFrameLayout>

@@ -228,7 +228,7 @@ public class SearchFragment extends BaseFragment {
                     public void onFailure(int statusCode, String error_msg) {
                         Logger.d("statusCode:" + statusCode + " error_msg:" + error_msg);
                         showToast(error_msg + "(" + statusCode + ")");
-                        searchVgridview.endMoreRefreshComplete();
+//                        searchVgridview.endMoreRefreshComplete();
                         loadingProgBar.setVisibility(View.GONE);
                         showTipView();
                     }
@@ -370,7 +370,7 @@ public class SearchFragment extends BaseFragment {
             if (null != mMoviceList) {
                 final MoviceMode moviceMode = mMoviceList.get(position);
                 Glide.with(getActivity())
-                        .load(Consts.ROOT_ADDR + moviceMode.getPath ()).into(((ImageView) holder.bgIv));
+                        .load(Consts.ROOT_ADDR + moviceMode.getPlay_url ()).into(((ImageView) holder.bgIv));
                 ((TextView) holder.nameTv).setText(mMoviceList.get(position).getProgram_name ());
                 holder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override

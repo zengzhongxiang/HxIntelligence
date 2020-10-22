@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.ybiptv.R;
 import com.app.ybiptv.player.UpVideoView;
@@ -288,6 +289,15 @@ public class MediaPlayActivity extends BaseActivity {
                     totalTv.setText(durationTimeStr);
                     progressSeekBar.setMax(duration);
                     progressSeekBar.setProgress(position);
+
+                    System.out.println ("positionTimeStr=="+positionTimeStr + "  durationTimeStr == "+durationTimeStr);
+                    System.out.println ("position=="+position+ "  duration=="+duration);
+                    if(position>300000){   //播放5分钟停止
+                        upVideoView.release(true);
+                        cancelProgressTimer();
+                        Toast.makeText(getApplicationContext(), "试看5分钟结束", Toast.LENGTH_SHORT).show();
+                    }
+
                     //
 //                        Logger.d("position:" + position + " " + CommonUtil.stringForTime(position)
 //                                + " duration:" + duration + " " + CommonUtil.stringForTime(duration));

@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ import com.app.ybiptv.view.SpaceItemDecoration;
 import com.bumptech.glide.Glide;
 import com.open.leanback.widget.BaseGridView;
 import com.open.leanback.widget.HorizontalGridView;
+import com.open.library.utils.CommonUtil;
 import com.orhanobut.logger.Logger;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.GsonResponseHandler;
@@ -41,10 +43,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
 
 public class TvDetailsActivity extends BaseActivity {
 
@@ -138,8 +143,8 @@ public class TvDetailsActivity extends BaseActivity {
 
     //    String playUrl = "https://res.exexm.com/cw_145225549855002";
 
-//    String playUrl = "http://116.153.32.50:18180/Movie_bst/20200911/英雄时代.mp4"; // rtmp://live.hkstv.hk.lxdns.com/live/hks
-    String playUrl = "http://118.212.169.134/PLTV/88888888/224/3221226431/index.m3u8";  //直播
+    String playUrl; //= "http://116.153.32.50:18180/Movie_bst/20200911/英雄时代.mp4"; // rtmp://live.hkstv.hk.lxdns.com/live/hks
+//    String playUrl = "http://118.212.169.134/PLTV/88888888/224/3221226431/index.m3u8";  //直播
 
     @BindView(R.id.mv_main_director)
     TextView mvMainDirector;
@@ -149,21 +154,10 @@ public class TvDetailsActivity extends BaseActivity {
     private List<EpisodesMode> episodesModeList;//电视剧数据源
     private MoviceMode moviceMode;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_details);
-
-        Random random = new Random ();
-        int r = random.nextInt(2);
-        System.out.println ("rrrrr=="+r);  //http://118.212.169.134/PLTV/88888888/224/3221226431/index.m3u8
-//        if(r== 1){
-//            playUrl = "http://58.17.40.142/PLTV/88888888/224/3221227034/10000100000000060000000000570885_0.smil";
-//        }else{
-//            playUrl = "http://116.153.32.50:18180/Movie_bst/20200911/英雄时代.mp4";
-//        }
-        playUrl = "http://192.168.0.250:8686/dy/20200924/超完美谋杀案.mp4";
 
         ButterKnife.bind(this);
         initBundleArgs(getIntent());
@@ -205,17 +199,17 @@ public class TvDetailsActivity extends BaseActivity {
         moviceMode = (MoviceMode) intent.getSerializableExtra("movice_mode");
         if (null != moviceMode) {
             Logger.d("moviceMode：" + moviceMode);
-            playContent.setVideoPath(Consts.ROOT_ADDR + moviceMode.getPath ());
+//            playContent.setVideoPath(moviceMode.getPlay_url ());
             // 初始化播放信息.
             mvTitle.setText(moviceMode.getProgram_name ());
-            mvMakedLanguage.setText("" + moviceMode.getArea() + " | " + moviceMode.getType() + " | " + moviceMode.getSort());
+            mvMakedLanguage.setText("" + moviceMode.getProduction_area () + " | " + moviceMode.getDouban_score ());
             mvMainDirector.setText("导演：" + moviceMode.getDirector());
-            mvMainActor.setText("主演：" + moviceMode.getActor());
-            mvSynopsis.setText("剧情简介：" + moviceMode.getIntroduction());
+            mvMainActor.setText("主演：" + moviceMode.getPerformer ());
+            mvSynopsis.setText("剧情简介：" + moviceMode.getBrief_introduction ());
 //            mvType.setText("类型：" + );
-//            playUrl = moviceMode.get
+            playUrl = moviceMode.getPlay_url ();
             // 是否付费.
-            layMoney.setVisibility(View.GONE);
+            layMoney.setVisibility(View.VISIBLE);
             // 根据 电影/电视剧 判断，显示相关界面.
             if ("电影".equals(moviceMode.getType())) {
                 mvCount.setVisibility(View.GONE);
@@ -233,16 +227,20 @@ public class TvDetailsActivity extends BaseActivity {
             }
             // 播放第一集
             //                // 获取播放集数数据信息.
-            episodesModeList = moviceMode.getEpisodes();
-            if (null != episodesModeList && episodesModeList.size() > 0) {
-                playUrl = Consts.ROOT_ADDR + episodesModeList.get(0).getPlay_url();
-                Logger.d("playUrl:" + playUrl);
-                playContent.setVideoPath(playUrl);
-                playContent.start();
-            }
+//            episodesModeList = moviceMode.getEpisodes();
+//            if (null != episodesModeList && episodesModeList.size() > 0) {
+//                playUrl = Consts.ROOT_ADDR + episodesModeList.get(0).getPlay_url();
+//                Logger.d("playUrl:" + playUrl);
+//                playContent.setVideoPath(playUrl);
+//                playContent.start();
+//            }
         }
-        playContent.setVideoPath(playUrl);
-        playContent.start();
+//
+        System.out.println ("playUrl=="+playUrl);
+        if(!TextUtils.isEmpty (playUrl)) {
+            playContent.setVideoPath(playUrl);
+            playContent.start ();
+        }
     }
 
     private void initMvCount() {
@@ -303,6 +301,16 @@ public class TvDetailsActivity extends BaseActivity {
                 playerBoardView.setBackgroundResource(b ? R.drawable.movice_board_s_bg : R.drawable.movice_board_bg);
             }
         });
+        // 监听事件
+        playContent.setOnInfoListener(new IMediaPlayer.OnInfoListener() {
+            @Override
+            public boolean onInfo(IMediaPlayer mp, int what, int extra) {
+                if (IMediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START == what) {
+                    startProgressTimer();
+                }
+                return false;
+            }
+        });
         layPlayFn.requestFocus();
     }
 
@@ -319,7 +327,7 @@ public class TvDetailsActivity extends BaseActivity {
 //                }
 
                 startActivity(MediaPlayActivity.TVStartActivity(this, playUrl, moviceMode.getProgram_name (),
-                        moviceMode.getDirector(), moviceMode.getActor(), moviceMode.getIntroduction()));
+                        moviceMode.getDirector(), moviceMode.getPerformer (), moviceMode.getBrief_introduction ()));
 
                 break;
             case R.id.lay_money: // 付费
@@ -345,6 +353,7 @@ public class TvDetailsActivity extends BaseActivity {
     protected void onStop() {
         super.onStop();
         playContent.release(true);
+        cancelProgressTimer();
     }
 
     /**
@@ -456,6 +465,50 @@ public class TvDetailsActivity extends BaseActivity {
             }
         }
 
+    }
+
+
+    //进度定时器
+    protected Timer updateProcessTimer;
+    //定时器任务
+    protected TvDetailsActivity.ProgressTimerTask mProgressTimerTask;
+
+    protected void startProgressTimer() {
+        cancelProgressTimer();
+        updateProcessTimer = new Timer();
+        mProgressTimerTask = new TvDetailsActivity.ProgressTimerTask ();
+        updateProcessTimer.schedule(mProgressTimerTask, 0, 300);
+    }
+
+    protected void cancelProgressTimer() {
+        if (updateProcessTimer != null) {
+            updateProcessTimer.cancel();
+            updateProcessTimer = null;
+        }
+        if (mProgressTimerTask != null) {
+            mProgressTimerTask.cancel();
+            mProgressTimerTask = null;
+        }
+    }
+
+    private class ProgressTimerTask extends TimerTask {
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+//                    if (upVideoView.isPlaying()) {
+                    // 更新进度信息.
+                    int position = playContent.getCurrentPosition();
+                    System.out.println ("position=="+position);
+                    if(position>300000){   //播放5分钟停止
+                        cancelProgressTimer();
+                        playContent.release(true);
+                        Toast.makeText(getApplicationContext(), "试看5分钟结束", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
 }

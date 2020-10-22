@@ -57,8 +57,9 @@ public class WelcomeActivity extends Activity  {
     Runnable runnable = new Runnable(){
         @Override
         public void run() {
-            initHost();
+
             handler.sendEmptyMessageDelayed(200,2000);
+                        initHost();
         }
     };
 

@@ -15,6 +15,9 @@ import android.util.Log;
 
 import com.open.library.joor.Reflect;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -70,7 +73,51 @@ public class EthernetManagerRef {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "";
+        String mac = getMac();
+        return mac;
+    }
+
+    public static String getMac() {
+        String  mac  = null;
+        try {
+            mac = getMac(2);
+            if (mac==null)
+                mac = getMac(1);
+        } catch (IOException e) {
+            try {
+                mac = getMac(1);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return mac;
+
+    }
+
+    public static String getMac(int macType) throws IOException {
+        Process pp;
+        String str = "";
+        if (macType == 1) {
+            try {
+                pp = Runtime.getRuntime().exec("cat /sys/class/net/wlan0/address");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                return null;
+            }
+        } else if (macType == 2) {
+            return getLocalEthernetMacAddress();
+
+        } else {
+            pp = Runtime.getRuntime().exec("cat /sys/class/net/wlan0/address");
+        }
+        LineNumberReader input = new LineNumberReader(new InputStreamReader (pp.getInputStream()));
+        while (str != null) {
+            str = input.readLine();
+            if (str != null) {
+                return str.trim();
+            }
+        }
+        return null;
     }
 
     public static String getLocalEthernetMacAddress() {

@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,12 +25,13 @@ import com.app.ybiptv.bean.ResultBean;
 import com.app.ybiptv.fragment.FiltrateMoviceFragment;
 import com.app.ybiptv.utils.Consts;
 import com.app.ybiptv.view.SpaceItemDecoration;
+import com.bumptech.glide.Glide;
 import com.open.leanback.widget.BaseGridView;
 import com.open.leanback.widget.HorizontalGridView;
 import com.open.leanback.widget.OnChildSelectedListener;
-import com.open.library.utils.PreferencesUtils;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.GsonResponseHandler;
+import com.zhy.autolayout.AutoFrameLayout;
 import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.ArrayList;
@@ -76,13 +78,13 @@ public class FiltrateMoviceActivity extends BaseActivity {
     private void initAllDatas() {
         mMyOkhttp = ((IptvApplication)getApplicationContext()).getOkHttp();
         //
-//        mTitlerList.add(new MoviceTitlerMode("", new NameInfo ("推荐","action")));
-//        mTitlerList.add(new MoviceTitlerMode("", new NameInfo ("动作武侠","action")));
-//        mTitlerList.add(new MoviceTitlerMode("", new NameInfo ("战争历史","Warfare")));
-//        mTitlerList.add(new MoviceTitlerMode("", new NameInfo ("犯罪心理","Crime")));
-//        mTitlerList.add(new MoviceTitlerMode("", new NameInfo ("历史悬疑","suspense")));
-//        mTitlerList.add(new MoviceTitlerMode("", new NameInfo ("爆笑喜剧","comedy")));
-//        mTitlerList.add(new MoviceTitlerMode("", new NameInfo ("动漫少儿","children")));
+//        mTitlerList.add(new MoviceTitlerMode("", "推荐"));
+//        mTitlerList.add(new MoviceTitlerMode("","动作武侠"));
+//        mTitlerList.add(new MoviceTitlerMode("","战争历史"));
+//        mTitlerList.add(new MoviceTitlerMode("","犯罪心理"));
+//        mTitlerList.add(new MoviceTitlerMode("","历史悬疑"));
+//        mTitlerList.add(new MoviceTitlerMode("","爆笑喜剧"));
+//        mTitlerList.add(new MoviceTitlerMode("","动漫少儿"));
     }
 
     private void initAllViews() {
@@ -95,9 +97,9 @@ public class FiltrateMoviceActivity extends BaseActivity {
 //        titleHgridview.getBaseGridViewLayoutManager().setFocusOutSideAllowed(true, true);
 //        titleHgridview.getBaseGridViewLayoutManager().setFocusScrollStrategy(BaseGridView.FOCUS_SCROLL_ITEM);
         mTitlerAdapter = new TitlerAdapter();
-        titleHgridview.setPadding(60, 0, 0, 0);
+        titleHgridview.setPadding(60, 0, 60, 0);
         int top = AutoUtils.getPercentHeightSizeBigger(0);
-        int right = AutoUtils.getPercentWidthSizeBigger(20);
+        int right = AutoUtils.getPercentWidthSizeBigger(-50);
         titleHgridview.addItemDecoration(new SpaceItemDecoration (right, top));
         AutoUtils.autoSize(titleHgridview);
         titleHgridview.setAdapter(mTitlerAdapter);
@@ -141,7 +143,9 @@ public class FiltrateMoviceActivity extends BaseActivity {
         searchBtn.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                searchBtn.setBackgroundResource(b ? R.drawable.trailer_btn_focused : R.drawable.trailer_btn_normal);
+                searchBtn.setBackgroundResource(b ? R.drawable.pw: R.drawable.trailer_btn_normal);
+                searchBtn.setTextColor(getResources().getColor(b ? R.color.whilte : R.color.title_none_color));
+                newMovice_btn.setTextColor(getResources().getColor(b ? R.color.whilte : R.color.title_none_color));
             }
         });
         searchBtn.setOnKeyListener(new View.OnKeyListener() {
@@ -168,7 +172,9 @@ public class FiltrateMoviceActivity extends BaseActivity {
         newMovice_btn.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                newMovice_btn.setBackgroundResource(b ? R.drawable.trailer_btn_focused : R.drawable.trailer_btn_normal);
+                newMovice_btn.setBackgroundResource(b ? R.drawable.pw : R.drawable.trailer_btn_normal);
+                newMovice_btn.setTextColor(getResources().getColor(b ? R.color.whilte : R.color.title_none_color));
+                searchBtn.setTextColor(getResources().getColor(b ? R.color.whilte : R.color.title_none_color));
             }
         });
         newMovice_btn.setOnKeyListener(new View.OnKeyListener() {
@@ -206,7 +212,7 @@ public class FiltrateMoviceActivity extends BaseActivity {
 //        http://ott.hengxsoft.com:8888/epg/router?appkey=hhzt&format=json&method=api.program.categoryList&v=1.0&session=&username=600101&programGroupId=26
 //        appkey=hhzt&format=json&method=api.program.categoryList&v=1.0&session=&username=600101&programGroupId=26
 //        Map<String, String> params = new HashMap<> ();
-//        params.put("appkey", "hhzt");
+//        System.out.println ("getMac()=="+getMac());
 //        params.put("format",  "json");
 //        params.put("method","api.program.categoryList");
 //        params.put("session","");
@@ -224,16 +230,21 @@ public class FiltrateMoviceActivity extends BaseActivity {
 
             @Override
             public void onSuccess(int statusCode, ResultBean<List<MoviceTitlerMode>> response) {
-                mTitlerList = response.getData();
-                System.out.println ("mTitlerList=="+mTitlerList);
-                mTitlerAdapter.notifyDataSetChanged();
-                // 刷新
-                if (null != mTitlerList) {
-                    mFragmentList.clear();
-                    for (MoviceTitlerMode titleMode : mTitlerList) {
-                        mFragmentList.add(new FiltrateMoviceFragment(mMyOkhttp, titleMode));
+                System.out.println ("response=="+response);
+                if(response.getCode () == 200 || response.getCode () == 0) {
+                    mTitlerList = response.getData ();
+                    System.out.println ("mTitlerList==" + mTitlerList);
+                    mTitlerAdapter.notifyDataSetChanged ();
+                    // 刷新
+                    if (null != mTitlerList) {
+                        mFragmentList.clear ();
+                        for (MoviceTitlerMode titleMode : mTitlerList) {
+                            mFragmentList.add (new FiltrateMoviceFragment (mMyOkhttp, titleMode));
+                        }
+                        mFragAdapter.notifyDataSetChanged ();
                     }
-                    mFragAdapter.notifyDataSetChanged();
+                }else{
+                    Toast.makeText(getApplicationContext(), response.getMsg (), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -270,12 +281,33 @@ public class FiltrateMoviceActivity extends BaseActivity {
                     @Override
                     public void onFocusChange(View view, boolean b) {
                         // TODO xml 设置 android:duplicateParentState="true" selector 无效，临时这样处理.
+
                         TextView tv = view.findViewById(R.id.title_tv);
+//                        tv.setTextColor(getResources().getColor( R.color.whilte));
+
                         View lineView = view.findViewById(R.id.title_line_view);
-                        lineView.setBackgroundColor(getResources().getColor(b ? R.color.title_select_color : R.color.clear_color));
+
+//                        AutoFrameLayout title_layout = view.findViewById (R.id.title_layout);
+                        tv.setBackgroundResource (b ? R.drawable.title_normal : R.color.clear_color);
+
+                        System.out.println ("view=="+view.getTag()+"   pageVp.getCurrentItem()=="+pageVp.getCurrentItem()+"  bbb="+b);
                         // 焦点已不再.
                         if ((int) view.getTag() != pageVp.getCurrentItem()) {
-                            tv.setTextColor(getResources().getColor(b ? R.color.title_select_color : R.color.title_none_color));
+                            tv.setTextColor(getResources().getColor(b ? R.color.title_select_color : R.color.whilte));
+                            lineView.setBackgroundColor(getResources().getColor(b ? R.color.title_select_color : R.color.clear_color));
+                        }else{
+                            int count = titleHgridview.getChildCount();
+                            for (int i=0;i<count;i++)
+                            {
+                                View child = titleHgridview.getChildAt(i);
+                                TextView textView = child.findViewById(R.id.title_tv);
+                                if(textView!=null) {
+                                    textView.setTextColor (getResources ().getColor (b ? R.color.whilte : R.color.title_none_color));
+                                }
+                            }
+
+                            tv.setTextColor(getResources().getColor(b ? R.color.whilte : R.color.title_select_color));
+                            lineView.setBackgroundColor(getResources().getColor(b ? R.color.clear_color : R.color.title_select_color));
                         }
                     }
                 });

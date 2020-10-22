@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.open.leanback.widget.NonOverlappingLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/noclip"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FF232628">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/network_sniff_tv_icon" />
+
+            <ImageView
+                android:id="@+id/bg_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <View
+                android:id="@+id/board_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/movice_board_bg"
+                android:visibility="invisible" />
+        </com.zhy.autolayout.AutoFrameLayout>
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="40px"
+            android:gravity="center"
+            android:paddingTop="5px"
+            android:text="未知"
+            android:textColor="#FFF8F8F8"
+            android:textSize="28px" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+</com.open.leanback.widget.NonOverlappingLinearLayout>

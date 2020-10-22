@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.app.ybiptv.service.WebSocketService;
+import com.app.ybiptv.utils.BasicParamsInterceptor;
 import com.app.ybiptv.utils.Consts;
 import com.open.library.network.NetWorkTools;
 import com.open.library.utils.PreferencesUtils;
@@ -20,6 +21,8 @@ import com.orhanobut.logger.PrettyFormatStrategy;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tsy.sdk.myokhttp.MyOkHttp;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -51,6 +54,7 @@ public class IptvApplication extends Application {
      **/
     public String versionName;
     public int versionCode;
+    public BasicParamsInterceptor basicParamsInterceptor;
 
     public String getVersionName() {
         return versionName;
@@ -79,11 +83,28 @@ public class IptvApplication extends Application {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+//添加post公共请求参数  Constants.PACKAGE 和 Constants.CFROM
+        String roomNo = PreferencesUtils.getString(getApplication (), Consts.IP_ROOM_NO_KEY);
 
         mNetWorkTools = new NetWorkTools(this);
+        System.out.println ("mac1111=="+getManAddr ());
+        Map<String, String> params = new HashMap<> ();
+        params.put("mac",getManAddr ());
+        params.put ("room",roomNo);
+        params.put ("ver",getVersionName ());
+        params.put ("type",android.os.Build.MODEL);
+        System.out.println ("mac=="+getManAddr ());
+        basicParamsInterceptor = new BasicParamsInterceptor.Builder()
+                .addHeaderParamsMap(params)  //  添加公共消息头
+                .addParam("from", "androidTV") //添加公共参数到 post 请求体
+                .addQueryParam("version",getVersionName ())  // 添加公共版本号，加在 URL 后面
+//                .addHeaderLine("mac:"+getManAddr ())  // 示例： 添加公共消息头
+//                .addParamsMap(params) // 可以添加 Map 格式的参数
+                .build();
+
         startService(new Intent(getApplicationContext(), WebSocketService.class)); // 启动websocket服务
-        initLogger();
-        initTencentX5WebView();
+//        initLogger();
+//        initTencentX5WebView();
         initOkHttp();
         initNetworkChangedReceiver();
 //        initWifiAp();
@@ -94,13 +115,20 @@ public class IptvApplication extends Application {
         filter.addAction(ETHERNET_STATE_CHANGED_ACTION);
         registerReceiver(mNetworkChangedReceiver, filter);
     }
+//        File sdcache = new File(Environment.getExternalStorageDirectory(), "cache");
 
     MyOkHttp mMyOkhttp;
 
     private void initOkHttp() {
+        //okhttp可以缓存数据....指定缓存路径
+//        //指定缓存大小
+//        int cacheSize = 10 * 1024 * 1024;
+
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
+                .addInterceptor(basicParamsInterceptor) // 添加公共参数拦截器
+//                .cache(new Cache (sdcache.getAbsoluteFile(), cacheSize))//设置缓存
                 //其他配置
                 .build();
         mMyOkhttp = new MyOkHttp(okHttpClient);
@@ -150,6 +178,7 @@ public class IptvApplication extends Application {
         }
         Logger.d("macAddr:" + macAddr);
         return macAddr;
+//        return "1111111111";
     }
 
     private BroadcastReceiver mNetworkChangedReceiver = new BroadcastReceiver() {

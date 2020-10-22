@@ -25,7 +25,7 @@ public class BaseActivity extends FragmentActivity {
     private static final String LAYOUT_LINEARLAYOUT = "LinearLayout";
     private static final String LAYOUT_FRAMELAYOUT = "FrameLayout";
     private static final String LAYOUT_RELATIVELAYOUT = "RelativeLayout";
-
+    private IptvApplication application;
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
         View view = null;
@@ -50,6 +50,8 @@ public class BaseActivity extends FragmentActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setBackgroundResource(R.drawable.main_bg);
+        application = IptvApplication.getApplication ();
+
     }
 
     public void hideKeyboard(View v) {
@@ -103,5 +105,9 @@ public class BaseActivity extends FragmentActivity {
 
         }
         return super.dispatchKeyEvent (event);
+    }
+
+    public String getMac(){
+        return application.getManAddr ();
     }
 }

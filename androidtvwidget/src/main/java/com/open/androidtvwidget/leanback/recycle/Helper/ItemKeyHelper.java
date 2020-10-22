@@ -1,9 +1,9 @@
 package com.open.androidtvwidget.leanback.recycle.Helper;
 
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.KeyEvent;
 
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.open.androidtvwidget.leanback.recycle.RecyclerViewTV;
 

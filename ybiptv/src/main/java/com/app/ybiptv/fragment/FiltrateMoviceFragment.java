@@ -75,6 +75,7 @@ public class FiltrateMoviceFragment extends BaseFragment {
     public FiltrateMoviceFragment(MyOkHttp myOkHttp, MoviceTitlerMode titleMode) {
         mMyOkhttp = myOkHttp;
         mMoviceTitlerMode = titleMode;
+        System.out.println ("mMoviceTitlerMode==="+mMoviceTitlerMode.getId ());
     }
 
     @Nullable
@@ -85,9 +86,9 @@ public class FiltrateMoviceFragment extends BaseFragment {
         unbinder = ButterKnife.bind(this, view);
         mMoviceAdapter = new MoviceAdapter();
         // test data
-        for (int i = 0; i < 50; i++) {
-            mMoviceList.add(new MoviceMode());
-        }
+//        for (int i = 0; i < 50; i++) {
+//            mMoviceList.add(new MoviceMode());
+//        }
         // 初始化影视垂直布局.
         moviceVgridview.setPadding(GRIDVIEW_LEFT_P, GRIDVIEW_TOP_P, GRIDVIEW_RIGHT_P, GRIDVIEW_BOTTOM_P);
         moviceVgridview.setNumColumns(ITEM_NUM_ROW);
@@ -116,22 +117,22 @@ public class FiltrateMoviceFragment extends BaseFragment {
         moviceVgridview.setOnLoadMoreListener(new VerticalGridView.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                int count = mMoviceList.size();
-                for (int i = count; i < count + 50; i++) {
-                    mMoviceList.add(new MoviceMode());
-                }
-                moviceVgridview.endMoreRefreshComplete();
-                mMoviceAdapter.notifyDataSetChanged();
-                if (mMoviceList.size() > 200) {
-                    showToast("没有更多数据");
-                    moviceVgridview.endRefreshingWithNoMoreData();
-                }
+//                int count = mMoviceList.size();
+//                for (int i = count; i < count + 50; i++) {
+//                    mMoviceList.add(new MoviceMode());
+//                }
+//                moviceVgridview.endMoreRefreshComplete();
+//                mMoviceAdapter.notifyDataSetChanged();
+//                if (mMoviceList.size() > 200) {
+//                    showToast("没有更多数据");
+//                    moviceVgridview.endRefreshingWithNoMoreData();
+//                }
                 mPageNum += 1;
                 refshRequest();
             }
         });
         // 刷新界面.
-//        refshRequest();
+        refshRequest();
         return view;
     }
 
@@ -148,6 +149,7 @@ public class FiltrateMoviceFragment extends BaseFragment {
 
             @Override
             public void onSuccess(int statusCode, ResultBean<List<MoviceMode>> response) {
+                System.out.println ("mMoviceTitlerMode.response=="+response);
                 List<MoviceMode> moviceModes = response.getData();
                 Logger.d("" + moviceModes);
                 if (mPageNum == Consts.DEFUALT_PAGE) {
@@ -204,7 +206,7 @@ public class FiltrateMoviceFragment extends BaseFragment {
             if (null != mMoviceList) {
                 final MoviceMode moviceMode = mMoviceList.get(position);
                 Glide.with(getActivity())
-                        .load(Consts.ROOT_ADDR + moviceMode.getPath ()).into(((ImageView) holder.bgIv));
+                        .load(Consts.ROOT_ADDR + moviceMode.getLittle_poster ()).into(((ImageView) holder.bgIv));
                 ((TextView) holder.nameTv).setText(moviceMode.getProgram_name ());
                 holder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override

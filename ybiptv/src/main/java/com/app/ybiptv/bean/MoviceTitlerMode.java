@@ -13,6 +13,11 @@ public class MoviceTitlerMode {
     String creationTime;
     String numberOfFilms;
 
+    public MoviceTitlerMode(String id, String programName) {
+        this.id = id;
+        this.programName = programName;
+    }
+
     public MoviceTitlerMode(String id, String programName, String state, String explain_, String creationTime, String numberOfFilms) {
         this.id = id;
         this.programName = programName;

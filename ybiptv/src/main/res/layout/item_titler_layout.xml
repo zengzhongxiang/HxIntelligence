@@ -8,18 +8,22 @@
     android:focusableInTouchMode="true">
 
     <com.zhy.autolayout.AutoFrameLayout
-        android:layout_width="@dimen/title_w"
+        android:id="@+id/title_layout"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/title_h"
         android:duplicateParentState="true">
-        <!-- 标题栏文本 -->
+        <!-- 标题栏文本  @drawable/title_text_state_selector -->
         <TextView
             android:id="@+id/title_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:paddingLeft="50px"
+            android:paddingRight="50px"
             android:duplicateParentState="true"
+            android:maxLines="1"
             android:gravity="center"
             android:text="电视剧"
-            android:textColor="@drawable/title_text_state_selector"
+            android:textColor="@color/whilte"
             android:textSize="40px" />
         <!-- 下划线 -->
         <View
